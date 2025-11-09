@@ -22,8 +22,11 @@
                 <li><a href="store.html"><i class="fa-solid fa-store"></i> ร้านค้าทั้งหมด</a></li>
             </ul>
             <div class="search-bar">
-                <input type="text" placeholder="ค้นหาเกมที่คุณต้องการ...">
+                <input type="text" placeholder="ค้นหาเกมที่คุณต้องการ..." autocomplete="off">
                 <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                
+                <div id="search-results-list" class="search-results-list hidden">
+                    </div>
             </div>
             
             <div class="user-icons">
@@ -44,41 +47,57 @@
     <main>
         <section class="hero-banner">
              
-    <div class="hero-slide active">
-       
-       <iframe class="hero-video-iframe" 
-        src="https://www.youtube.com/embed/u83VdXAVq08?autoplay=1&mute=1&loop=1&playlist=u83VdXAVq08&controls=0&showinfo=0&rel=0&playsinline=1" 
-        frameborder="0" 
-        allow="autoplay; encrypted-media" 
-        allowfullscreen>
-</iframe>
+             <div class="hero-slide active">
+                
+                <iframe class="hero-video-iframe" 
+                 src="https://www.youtube.com/embed/u83VdXAVq08?autoplay=1&mute=1&loop=1&playlist=u83VdXAVq08&controls=0&showinfo=0&rel=0&playsinline=1" 
+                 frameborder="0" 
+                 allow="autoplay; encrypted-media" 
+                 allowfullscreen>
+                </iframe>
+         
+                <div class="video-overlay"></div>
+         
+                <div class="hero-content">
+                    <h2>BLACK MYTH: WUKONG</h2>
+                    <p>ตำนานไซอิ๋วบทใหม่ในรูปแบบ Action RPG สุดอลังการ</p>
+                    <a href="product-detail.html?id=4" class="btn btn-primary">สั่งซื้อล่วงหน้า</a>
+                </div>
+             </div>
+             
+             <div class="hero-slide" style="background-image: url('https://i.ytimg.com/vi_webp/DvEaa604nPA/maxresdefault.webp'); background-size: cover; background-position: center;">
+                 <div class="video-overlay"></div> 
+                 <div class="hero-content">
+                    <h2>ELDEN RING</h2>
+                    <p>Shadow of the Erdtree</p>
+                    <a href="product-detail.html?id=3" class="btn btn-primary">ซื้อเลย</a>
+                 </div>
+             </div>
 
-       <div class="video-overlay"></div>
-
-       <div class="hero-content">
-           <h2>BLACK MYTH: WUKONG</h2>
-           <p>ตำนานไซอิ๋วบทใหม่ในรูปแบบ Action RPG สุดอลังการ</p>
-           <a href="#" class="btn btn-primary">สั่งซื้อล่วงหน้า</a>
-       </div>
-    </div>
-    
-    <div class="hero-slide" style="background-image: url('https://i.ytimg.com/vi_webp/DvEaa604nPA/maxresdefault.webp'); background-size: cover; background-position: center;">
-        <div class="video-overlay"></div> 
-        <div class="hero-content">
-           <h2>ELDEN RING</h2>
-           <p>Shadow of the Erdtree</p>
-           <a href="#" class="btn btn-primary">ซื้อเลย</a>
-        </div>
-    </div>
-
-   <button class="carousel-arrow hero-prev"><i class="fa-solid fa-chevron-left"></i></button>
-   <button class="carousel-arrow hero-next"><i class="fa-solid fa-chevron-right"></i></button>
-</section>
+            <button class="carousel-arrow hero-prev"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="carousel-arrow hero-next"><i class="fa-solid fa-chevron-right"></i></button>
+        </section>
 
         <section class="container special-deals">
             <h2 class="section-title">🔥 Special Deals</h2>
-            <div class="deals-grid" id="deals-grid-container">
+            <div class="deals-grid">
+                <div class="deal-card">
+                    <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/bundles/32470/5htp7gjbzhjufq5c/67f4f047da1935d1efe1c4a4697011951be5b534/header_ratio.jpg?t=1746520128" alt="Deal 1">
+                    <div class="deal-info">
+                        <h3>Cyberpunk 2077: Ultimate Edition</h3>
+                        <span>-50%</span>
+                        <a href="product-detail.html?id=9" class="btn btn-secondary">ซื้อเลย</a>
+                    </div>
                 </div>
+                <div class="deal-card">
+                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2778590/header.jpg?t=1720714093" alt="Deal 2">
+                    <div class="deal-info">
+                        <h3>Elden Ring: Shadow of the Erdtree</h3>
+                        <span>-15%</span>
+                        <a href="product-detail.html?id=3" class="btn btn-secondary">ซื้อเลย</a>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="container top-up">

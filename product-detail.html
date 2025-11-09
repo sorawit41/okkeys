@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>รายละเอียดสินค้า - OK-IT Game Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -22,8 +23,11 @@
                 <li><a href="store.html"><i class="fa-solid fa-store"></i> ร้านค้าทั้งหมด</a></li>
             </ul>
             <div class="search-bar">
-                <input type="text" placeholder="ค้นหาเกมที่คุณต้องการ...">
+                <input type="text" placeholder="ค้นหาเกมที่คุณต้องการ..." autocomplete="off">
                 <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                
+                <div id="search-results-list" class="search-results-list hidden">
+                    </div>
             </div>
             <div class="user-icons">
                 <a href="how-to-buy.html">วิธีซื้อ?</a>
@@ -44,7 +48,6 @@
         <div class="product-detail-container" id="product-detail-container">
             <h2 class="section-title">กำลังโหลดข้อมูลสินค้า...</h2>
         </div>
-
         <section class="related-products-section">
             <h2 class="section-title">เกมที่คุณอาจจะสนใจ</h2>
             <div class="product-carousel-container">

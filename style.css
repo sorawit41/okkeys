@@ -60,9 +60,17 @@ img { max-width: 100%; display: block; }
     background-color: var(--color-accent); /* (แก้ไข) เปลี่ยนเป็นสีม่วงกลาง */
     transform: translateY(-2px); 
     box-shadow: var(--shadow-medium); 
+}/* (ใหม่) .btn-secondary ให้ใช้สีม่วงสว่าง (highlight) */
+.btn-secondary { 
+    background-color: var(--color-highlight); /* ม่วงสว่าง */
+    color: var(--color-text-light); /* (สีตัวอักษรขาว) */
+    border: 1px solid var(--color-highlight);
 }
-.btn-secondary { background-color: rgba(255, 255, 255, 0.9); color: var(--color-primary); }
-.btn-secondary:hover { background-color: white; transform: scale(1.05); }
+.btn-secondary:hover { 
+    background-color: var(--color-primary); /* ม่วงเข้ม (เหมือนปุ่มหลัก) */
+    border-color: var(--color-primary);
+    transform: scale(1.05); 
+}
 
 /* --- 1. Header & Nav (อัปเดตโลโก้) --- */
 .main-header {
@@ -88,7 +96,10 @@ img { max-width: 100%; display: block; }
 .nav-links { display: flex; gap: 1.5rem; margin-left: 2rem; flex-grow: 1; }
 .nav-links a { font-weight: 500; padding: 0.5rem; opacity: 0.9; }
 .nav-links a:hover { opacity: 1; color: var(--color-highlight); }
-.search-bar { display: flex; }
+.search-bar {
+    display: flex;
+    position: relative; /* (ใหม่) เพิ่มบรรทัดนี้ */
+}
 .search-bar input { padding: 0.75rem 1.25rem; border-radius: 20px 0 0 20px; border: none; width: 300px; font-family: 'Poppins', sans-serif; }
 .search-bar button { padding: 0.75rem 1rem; border-radius: 0 20px 20px 0; border: none; background-color: var(--color-highlight); color: white; cursor: pointer; }
 .user-icons { display: flex; gap: 1.5rem; font-size: 1.25rem; margin-left: 1.5rem; }
@@ -1216,5 +1227,84 @@ img { max-width: 100%; display: block; }
     font-size: 0.9rem; /* ลดขนาดตัวอักษรบนจอเล็ก */
 
 }
+/* --- 18. (ใหม่) ปรับปรุงปุ่มในหน้า Product Detail --- */
+.buy-actions {
+    
+    display: flex;
+    gap: 1rem; /* เพิ่มช่องว่างระหว่างปุ่ม */
+    flex-wrap: wrap; /* เผื่อปุ่มยาวบนจอมือถือ */
+}
 
+/* ทำให้ปุ่มมีขนาดเท่ากันบนจอเล็ก */
+@media (max-width: 480px) {
+    .buy-actions .btn {
+        flex: 1 1 150px; /* ให้ปุ่มขยายเต็มและตัดแถวเมื่อจำเป็น */
+        text-align: center;
+    }
+}
+/* --- 18. (ใหม่) สไตล์สำหรับรายการแนะนำการค้นหา --- */
+.search-results-list {
+    position: absolute;
+    top: 100%; /* ให้แสดงผลต่อจากขอบล่างของ search-bar */
+    left: 0;
+    width: 100%; /* กว้างเท่ากับ .search-bar */
+    background: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    box-shadow: var(--shadow-medium);
+    z-index: 2000; /* ให้แสดงทับเนื้อหาอื่น */
+    max-height: 400px; /* จำกัดความสูง */
+    overflow-y: auto; /* มี scrollbar ถ้าสูงเกิน */
+}
+
+/* คลาส .hidden ที่ JS จะใช้เพื่อซ่อนกล่อง */
+.search-results-list.hidden {
+    display: none;
+}
+
+/* สไตล์ของแต่ละรายการใน list */
+.search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    border-bottom: 1px solid #eee;
+    transition: var(--transition-fast);
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background-color: var(--color-secondary); /* สีพื้นหลังอ่อนๆ เวลา hover */
+}
+
+/* รูปภาพในรายการ */
+.search-result-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.search-result-item .item-name {
+    font-weight: 500;
+}
+
+.search-result-item .item-platform {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* ข้อความ "ไม่พบ" */
+.search-no-results {
+    padding: 1rem;
+    text-align: center;
+    color: #888;
+}
 /* --- จบไฟล์ style.css --- */
