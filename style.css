@@ -1,0 +1,1220 @@
+/* --- 0. Global Setup --- */
+:root {
+    --color-primary: #3b2a53; /* ม่วงเข้ม (แถบบน) */
+    --color-secondary: #f4f4f8; /* เทาอ่อน (พื้นหลัง) */
+    --color-accent: #5a4a6e; /* ม่วงเทา (แถบรอง) */
+    --color-highlight: #a48de8; /* ม่วงสว่าง (เน้น) */
+    --color-text: #333;
+    --color-text-light: #ffffff;
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 6px 20px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+    --transition-fast: all 0.3s ease-in-out;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Kanit', 'Poppins', sans-serif;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    line-height: 1.6;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* --- (คงไว้) ใช้วิธีนี้ดัน Footer แทน --- */
+main {
+    min-height: calc(100vh - 350px); 
+    /* (หมายเหตุ) 350px คือค่าประมาณความสูง Header+Footer
+       ถ้า Footer ยังลอย ให้เพิ่มค่านี้นิดหน่อย
+    */
+}
+
+a { text-decoration: none; color: inherit; transition: var(--transition-fast); }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+.container { max-width: 1300px; margin: 2.5rem auto; padding: 0 2rem; }
+.section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--color-highlight);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-align: center;
+}
+.btn-primary { 
+    background-color: var(--color-primary); /* (แก้ไข) เปลี่ยนเป็นสีม่วงเข้ม */
+    color: white; 
+}
+.btn-primary:hover { 
+    background-color: var(--color-accent); /* (แก้ไข) เปลี่ยนเป็นสีม่วงกลาง */
+    transform: translateY(-2px); 
+    box-shadow: var(--shadow-medium); 
+}
+.btn-secondary { background-color: rgba(255, 255, 255, 0.9); color: var(--color-primary); }
+.btn-secondary:hover { background-color: white; transform: scale(1.05); }
+
+/* --- 1. Header & Nav (อัปเดตโลโก้) --- */
+.main-header {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: slideInDown 0.5s ease-out;
+}
+.main-nav { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0.75rem 2rem; /* ปรับ Padding */
+}
+.logo a { display: block; }
+.logo img {
+    height: 55px; /* เพิ่มความสูงโลโก้ */
+    width: auto;
+}
+.nav-links { display: flex; gap: 1.5rem; margin-left: 2rem; flex-grow: 1; }
+.nav-links a { font-weight: 500; padding: 0.5rem; opacity: 0.9; }
+.nav-links a:hover { opacity: 1; color: var(--color-highlight); }
+.search-bar { display: flex; }
+.search-bar input { padding: 0.75rem 1.25rem; border-radius: 20px 0 0 20px; border: none; width: 300px; font-family: 'Poppins', sans-serif; }
+.search-bar button { padding: 0.75rem 1rem; border-radius: 0 20px 20px 0; border: none; background-color: var(--color-highlight); color: white; cursor: pointer; }
+.user-icons { display: flex; gap: 1.5rem; font-size: 1.25rem; margin-left: 1.5rem; }
+.user-icons a { font-size: 0.9rem; opacity: 0.9; cursor: pointer; }
+.user-icons a:hover { opacity: 1; color: var(--color-highlight); transform: scale(1.1); }
+.sub-nav { display: flex; justify-content: center; gap: 4rem; padding: 0.75rem 2rem; background-color: var(--color-accent); box-shadow: inset 0 2px 5px rgba(0,0,0,0.1); }
+.sub-nav a { font-weight: 600; padding: 0.25rem 0.5rem; border-bottom: 2px solid transparent; }
+.sub-nav a:hover { border-bottom-color: var(--color-highlight); }
+
+/* --- 2. Hero Banner (อัปเดตสำหรับ <iframe>) --- */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 550px; /* ความสูงที่คุณตั้งไว้ */
+    background-color: var(--color-primary);
+    overflow: hidden;
+}
+.hero-slide {
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    position: relative; 
+    background-color: #000; 
+}
+.hero-slide.active { 
+    display: flex; 
+}
+
+/* (ลบ) .hero-video (ไม่ใช้แล้ว) */
+
+/* (ใหม่) สไตล์สำหรับ <iframe> YouTube Background */
+.hero-video-iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw; /* 100% ของความกว้างจอ */
+    height: 100vh; /* 100% ของความสูงจอ */
+    min-width: 177.77vh; /* 16:9 Aspect Ratio */
+    min-height: 56.25vw; /* 16:9 Aspect Ratio */
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: none; /* (สำคัญ) ทำให้คลิกทะลุได้ */
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+    z-index: 2;
+}
+
+.hero-content { 
+    animation: fadeIn 1s ease-out;
+    position: relative; 
+    z-index: 3; 
+}
+.hero-content h2 { 
+    font-size: 3.5rem; 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+}
+.hero-content p { 
+    font-size: 1.25rem; 
+    margin: 0.5rem 0 1.5rem; 
+    opacity: 0.9;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.5); 
+}
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10; 
+    transition: var(--transition-fast);
+}
+.carousel-arrow:hover { background-color: rgba(0, 0, 0, 0.6); }
+.hero-prev { left: 1rem; }
+.hero-next { right: 1rem; }
+
+/* --- 3. Special Deals --- */
+.deals-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+.deal-card {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition-fast);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+.deal-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.deal-card img { width: 100%; height: 300px; object-fit: cover; }
+.deal-card .deal-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+}
+.deal-card .deal-info h3 { font-size: 1.5rem; }
+.deal-card .deal-info span {
+    background-color: #e74c3c;
+    padding: 0.25rem 0.75rem;
+    border-radius: 5px;
+    font-weight: 600;
+    display: inline-block;
+    margin: 0.5rem 0 1rem;
+}
+.deal-card .deal-info .btn { float: right; }
+
+/* --- 4. Top Up --- */
+.top-up-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+.top-up-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-fast);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+.top-up-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+.top-up-card span { font-weight: 600; color: var(--color-primary); }
+.top-up-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+    color: var(--color-highlight);
+}
+
+/* --- 5. Best Sellers (Carousel) --- */
+.product-carousel-container { position: relative; }
+.product-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 1.5rem;
+    padding: 1rem 0.5rem 2rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.product-carousel::-webkit-scrollbar { display: none; }
+.product-scroll-arrow {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    background-color: white;
+    color: var(--color-primary);
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition-fast);
+}
+.product-scroll-arrow:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+.product-prev { left: -22px; }
+.product-next { right: -22px; }
+
+/* --- 6. Product Card (สไตล์การ์ดสินค้า ใช้ร่วมกัน) --- */
+.product-card {
+    flex: 0 0 260px; /* ใช้สำหรับ Carousel */
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    transition: var(--transition-fast);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+.product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium); }
+.product-image { position: relative; }
+.product-image-link { display: block; height: 200px; }
+.product-image img { width: 100%; height: 100%; object-fit: cover; }
+.add-to-cart-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--color-highlight);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transform: scale(0);
+    transition: all 0.2s ease-out;
+}
+.product-card:hover .add-to-cart-btn { transform: scale(1); }
+.add-to-cart-btn:hover { background-color: var(--color-primary); }
+.product-info { padding: 1rem; }
+.product-info a { color: var(--color-text); }
+.product-info a:hover { color: var(--color-highlight); }
+.product-platform { font-size: 0.8rem; color: var(--color-accent); font-weight: 500; }
+.product-info h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    height: 2.8em; /* 2 บรรทัด */
+    overflow: hidden;
+    margin: 0.25rem 0;
+}
+.product-price { font-size: 1.1rem; font-weight: 700; color: var(--color-primary); margin-top: 0.5rem; }
+
+/* --- 7. Product Grid (สำหรับหน้า Store, Platform, Topup) --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+.product-grid .product-card {
+    flex-basis: auto; /* ล้างค่า flex-basis */
+}
+
+/* --- 8. Filter Bar (สำหรับหน้า Store) --- */
+.filter-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1rem;
+}
+.filter-btn {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--color-accent);
+    background: white;
+    color: var(--color-accent);
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+.filter-btn:hover {
+    background: var(--color-secondary);
+}
+.filter-btn.active {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+/* --- 9. Cart Sidebar --- */
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+.close-btn:hover { color: var(--color-primary); }
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px; /* ซ่อนไว้ทางขวา */
+    width: 380px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 30px rgba(0,0,0,0.15);
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.4s ease-in-out;
+}
+.cart-sidebar.active { right: 0; }
+.cart-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+.cart-header h3 {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+}
+.cart-items-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+.cart-empty {
+    text-align: center;
+    color: #888;
+    margin-top: 2rem;
+}
+.cart-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    animation: fadeIn 0.3s;
+}
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.cart-item-info {
+    flex-grow: 1;
+    font-size: 0.9rem;
+}
+.cart-item-info h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+.cart-item-price {
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-top: 0.25rem;
+}
+.cart-item-remove {
+    font-size: 0.8rem;
+    color: #e74c3c;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+.cart-item-remove:hover { text-decoration: underline; }
+.cart-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #eee;
+    background: #fdfdfd;
+}
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.btn-checkout { width: 100%; }
+
+/* --- 10. สไตล์หน้า Login และ Signup (ยกเครื่องใหม่) --- */
+.login-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    /* (แก้ไข 3/3) ลบ min-height ที่ขัดแย้งกันออก */
+    /* min-height: calc(100vh - 200px); */ 
+}
+
+.login-form-wrapper {
+    background: white;
+    padding: 2.5rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 480px; 
+    animation: fadeIn 0.5s;
+    margin: 2.5rem auto; /* (ใหม่) เพิ่ม margin ให้อยู่กลางๆ */
+}
+
+/* (ใหม่) ส่วนหัวการ์ด (โลโก้ + แท็บ) */
+.login-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.login-card-logo img {
+    height: 40px;
+    filter: brightness(0.1) contrast(1.2); /* กลับสีโลโก้ขาวเป็นดำ/ม่วง */
+    opacity: 0.7;
+}
+.login-tabs {
+    display: flex;
+    gap: 0.5rem;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    padding: 0.25rem;
+}
+.login-tabs a {
+    padding: 0.5rem 1rem;
+    border-radius: 18px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #888;
+}
+.login-tabs a.active {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+/* (ใหม่) ไอคอนในช่อง Input */
+.login-form-wrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; 
+}
+/* (ใหม่) ซ่อน Label เดิม */
+.login-form-wrapper form > label {
+    display: none;
+}
+.input-group {
+    position: relative;
+}
+.input-group i {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+.login-form-wrapper input[type="text"],
+.login-form-wrapper input[type="email"],
+.login-form-wrapper input[type="password"] {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem; /* เพิ่ม padding ซ้ายสำหรับไอคอน */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-family: 'Poppins', 'Kanit', sans-serif;
+    font-size: 1rem;
+}
+.login-form-wrapper input:focus {
+    outline: none;
+    border-color: var(--color-highlight);
+    box-shadow: 0 0 0 3px rgba(164, 141, 232, 0.2);
+}
+
+/* (ใหม่) "จดจำ" และ "ลืมรหัส" */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+}
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: #555;
+}
+.modal-link {
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    text-decoration: none;
+}
+.modal-link:hover {
+    text-decoration: underline;
+}
+
+/* (แก้ไข) ปุ่มเข้าสู่ระบบ/สมัคร */
+.login-form-wrapper .btn-primary {
+    margin-top: 0.5rem;
+    padding: 1rem; 
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* (ใหม่) สไตล์สำหรับเส้นคั่น และปุ่ม Social */
+.login-form-wrapper .divider {
+    text-align: center;
+    margin: 1.5rem 0;
+    color: #aaa;
+    position: relative;
+}
+.login-form-wrapper .divider span {
+    background: white;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+.login-form-wrapper .divider::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    z-index: 0;
+}
+
+.login-form-wrapper .social-login {
+    display: flex;
+    flex-direction: row; 
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.login-form-wrapper .social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    border: 1px solid #ddd;
+    background: white;
+    color: #333;
+    width: 100%; 
+    padding: 0.75rem; 
+}
+.login-form-wrapper .social-btn:hover {
+    background: #f9f9f9;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-light);
+}
+.login-form-wrapper .social-btn i {
+    font-size: 1.25rem;
+}
+.login-form-wrapper .social-btn img {
+    width: 20px;
+    height: 20px;
+}
+.login-form-wrapper .social-btn.facebook i {
+    color: #4267B2; /* สีโลโก้ Facebook */
+}
+.login-form-wrapper .register-link {
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-top: 1rem;
+    display: block; /* (ใหม่) */
+}
+
+
+/* --- 11. สไตล์หน้า Product Detail --- */
+.product-detail-container {
+    padding: 2.5rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    margin-top: 2rem;
+    animation: fadeIn 0.5s;
+}
+.product-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2.5rem;
+}
+.product-detail-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    object-fit: cover;
+    box-shadow: var(--shadow-light);
+}
+.product-detail-info h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+/* (ใหม่) เพิ่ม .product-meta-info */
+.product-meta-info {
+    margin: 1rem 0 1.5rem 0;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+}
+.meta-item strong {
+    color: var(--color-primary);
+    width: 100px; /* จัดให้ 'strong' กว้างเท่ากัน */
+    flex-shrink: 0;
+}
+.meta-item span {
+    color: #555;
+}
+.meta-item.genres {
+    align-items: flex-start; /* เผื่อมีหลาย tag */
+}
+.genre-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.genre-tag {
+    background-color: var(--color-secondary);
+    border: 1px solid #ddd;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-accent);
+}
+.product-detail-description {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+.product-detail-price {
+    font-size: 2.2rem; 
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem; 
+    border-top: 1px solid #eee;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+}
+.buy-actions .btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    transition: var(--transition-fast), box-shadow 0.3s ease;
+}
+.buy-actions .btn:hover {
+    box-shadow: 0 5px 15px rgba(164, 141, 232, 0.4); 
+}
+
+/* --- 12. สไตล์หน้า Checkout --- */
+/* --- (ใหม่) 12. สไตล์หน้า Checkout (อัปเดต) --- */
+.checkout-container {
+    display: grid;
+    /* (แก้ไข) ปรับ layout สำหรับจอที่เล็กลง */
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+/* (ใหม่) จัด layout 2 คอลัมน์สำหรับจอใหญ่ */
+@media (min-width: 992px) {
+    .checkout-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.checkout-summary, .payment-form {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+.checkout-summary h3, .payment-form h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+}
+.checkout-summary-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+.checkout-summary-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.checkout-summary-info { flex-grow: 1; }
+.checkout-summary-info h4 { font-size: 0.95rem; font-weight: 600; }
+.checkout-summary-price { font-weight: 600; }
+.checkout-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    border-top: 2px solid #333;
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+/* (ใหม่) สไตล์สำหรับส่วนผ่อนชำระ */
+.installment-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+.installment-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+.installment-toggle input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+.installment-options {
+    margin-top: 1rem;
+    padding-left: 2rem;
+}
+.installment-options.hidden {
+    display: none;
+}
+.installment-months {
+    display: flex;
+    flex-wrap: wrap; /* (ใหม่) เพิ่มการตัดแถว */
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.installment-months .month-option {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+.installment-months input[type="radio"] {
+    display: none; /* ซ่อนปุ่ม radio เดิม */
+}
+.installment-months .month-option:has(input:checked) {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+.installment-details-result {
+    font-size: 1rem;
+    font-weight: 600;
+}
+.installment-details-result strong {
+    color: var(--color-highlight);
+    font-size: 1.2rem;
+}
+
+
+.payment-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.payment-form label { font-weight: 600; margin-bottom: -0.5rem; }
+.payment-form .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.payment-form .input-group input {
+    width: 100%;
+}
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+.form-row .input-group {
+    flex: 1; /* แบ่งครึ่ง */
+}
+
+.payment-form input[type="text"], 
+.payment-form input[type="email"],
+.payment-form input[type="tel"] {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Poppins', 'Kanit', sans-serif;
+    font-size: 1rem;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.payment-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+.payment-options label:has(input:checked) {
+    border-color: var(--color-primary);
+    background: var(--color-secondary);
+}
+.payment-options input[type="radio"] {
+    width: 20px;
+    height: 20px;
+}
+.payment-options i {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    width: 30px;
+    text-align: center;
+}
+
+/* (ใหม่) สไตล์สำหรับแผงรายละเอียดการชำระเงิน */
+.payment-method-details {
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background-color: var(--color-secondary);
+}
+.payment-method-details.hidden {
+    display: none;
+}
+.payment-method-details img {
+    display: block;
+    margin: 1rem auto 0;
+    max-width: 250px;
+}
+.payment-method-details p {
+    text-align: center;
+    font-weight: 500;
+}
+.payment-method-details .payment-amount {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+
+.btn-checkout {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+/* (ใหม่) สไตล์สำหรับหน้า How-to-Buy */
+.how-to-buy-container {
+    background: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+}
+.step-item:not(:last-child) {
+    border-bottom: 1px solid #eee;
+}
+.step-icon {
+    flex: 0 0 60px;
+    height: 60px;
+    background-color: var(--color-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    color: var(--color-primary);
+}
+.step-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+}
+.step-content p {
+    color: #555;
+}
+/* --- 13. "ทำไมต้องซื้อกับเรา" --- */
+.features-section {
+    background-color: var(--color-primary); 
+    color: var(--color-text-light);
+    padding: 4rem 0;
+    margin-top: 0; 
+}
+.features-section h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+}
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    gap: 2.5rem;
+}
+.feature-item {
+    text-align: center;
+}
+.feature-item i {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+.feature-item h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+.feature-item p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    opacity: 0.8;
+}
+
+/* --- 14. สไตล์ Footer ที่อัปเกรดแล้ว --- */
+.main-footer {
+    text-align: left; 
+    padding: 3rem 0 0 0; 
+    background-color: var(--color-primary); 
+    color: var(--color-text-light);
+    margin-top: 2.5rem; 
+}
+
+.features-section + .main-footer {
+    margin-top: 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; 
+    gap: 2.5rem;
+    max-width: 1300px; 
+    margin: 0 auto; 
+    padding: 0 2rem;
+}
+.footer-column .footer-logo {
+    height: 50px;
+    width: auto;
+    margin-bottom: 1rem;
+}
+.footer-column p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.7;
+    max-width: 350px; 
+}
+.footer-column h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--color-highlight); 
+}
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-column ul li {
+    margin-bottom: 0.75rem;
+}
+.footer-column ul a {
+    opacity: 0.8;
+}
+.footer-column ul a:hover {
+    opacity: 1;
+    color: var(--color-highlight);
+    text-decoration: underline;
+}
+.social-icons {
+    display: flex;
+    gap: 1.25rem;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+.social-icons a {
+    opacity: 0.8;
+    transition: var(--transition-fast);
+}
+.social-icons a:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+    color: var(--color-highlight);
+}
+.footer-bottom {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--color-accent); 
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* --- 15. "เกมที่น่าสนใจ" (ใหม่) --- */
+.related-products-section {
+    margin-top: 3rem; 
+    padding-top: 2rem;
+    border-top: 1px solid #ddd; 
+}
+
+/* --- 16. Keyframe Animations --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- 17. Media Queries --- */
+@media (max-width: 992px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr 1fr; 
+    }
+}
+
+@media (max-width: 768px) {
+    .product-detail-grid {
+        grid-template-columns: 1fr; 
+    }
+    .checkout-container {
+        grid-template-columns: 1fr; 
+    }
+    .deals-grid {
+        grid-template-columns: 1fr; 
+    }
+    .login-form-wrapper .social-login {
+        flex-direction: column; /* (ใหม่) กลับเป็นแนวตั้งบนจอมือถือ */
+    }
+}
+
+@media (max-width: 576px) {
+    .features-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr; 
+        text-align: center;
+    }
+
+    .footer-column .footer-logo {
+        margin: 0 auto 1rem auto;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+
+    .login-form-wrapper {
+        padding: 2rem 1.5rem; /* (ใหม่) ลด padding การ์ดบนจอมือถือ */
+    }
+}
+
+/* --- 16. Keyframe Animations --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- 17. Media Queries --- */
+@media (max-width: 992px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr 1fr; 
+    }
+}
+
+@media (max-width: 768px) {
+    .product-detail-grid {
+        grid-template-columns: 1fr; 
+    }
+    .checkout-container {
+        grid-template-columns: 1fr; 
+    }
+    .deals-grid {
+        grid-template-columns: 1fr; 
+    }
+    .login-form-wrapper .social-login {
+        flex-direction: column; /* (ใหม่) กลับเป็นแนวตั้งบนจอมือถือ */
+    }
+}
+
+@media (max-width: 576px) {
+    .features-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr; 
+        text-align: center;
+    }
+
+    .footer-column .footer-logo {
+        margin: 0 auto 1rem auto;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+
+    .login-form-wrapper {
+        padding: 2rem 1.5rem; /* (ใหม่) ลด padding การ์ดบนจอมือถือ */
+    }
+}
+.nav-links a, .user-icons a {
+    font-size: 0.9rem; /* ลดขนาดตัวอักษรบนจอเล็ก */
+
+}
+
+/* --- จบไฟล์ style.css --- */

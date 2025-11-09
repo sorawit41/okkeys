@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เติมเกม - OK-IT Game Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://media.discordapp.net/attachments/1434888185770410044/1435641621101154397/Ok_keys_logo_white.png?ex=6910a973&is=690f57f3&hm=5e8b4590a7d74fc5b26242152958bd3def7445fdf0cd5c329cf179a79dd5a88e&=&format=webp&quality=lossless
+                    " alt="OK-IT Logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="store.html"><i class="fa-solid fa-store"></i> ร้านค้าทั้งหมด</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="ค้นหาเกมที่คุณต้องการ...">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="user-icons">
+                <a href="how-to-buy.html">วิธีซื้อ?</a>
+                <a href="#" id="cart-btn" aria-label="Shopping Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="login.html" aria-label="User Profile"><i class="fa-solid fa-user"></i></a>
+            </div>
+        </nav>
+        <nav class="sub-nav">
+            <a href="platform.html?platform=PlayStation">Play Station</a>
+            <a href="platform.html?platform=PC">PC</a>
+            <a href="platform.html?platform=Xbox">Xbox</a>
+            <a href="platform.html?platform=Nintendo">Nintendo</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2 class="section-title">💸 เติมเกม & บัตรกำนัล</h2>
+        <p>เลือกบัตรเติมเงินหรือ Points ที่คุณต้องการ</p>
+
+        <div class="product-grid" id="product-grid-topup">
+            </div>
+    </main>
+
+    <aside id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-cart-shopping"></i> ตะกร้าสินค้า</h3>
+            <button id="close-cart" class="close-btn">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items-list">
+            <p class="cart-empty">ตะกร้าของคุณว่างเปล่า</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>ยอดรวม:</span>
+                <span id="cart-total-price">0.00 ฿</span>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-checkout">ไปหน้าชำระเงิน</a>
+        </div>
+    </aside>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <a href="index.html">
+                    <img src="https://media.discordapp.net/attachments/1434888185770410044/1435641621101154397/Ok_keys_logo_white.png?ex=6910a973&is=690f57f3&hm=5e8b4590a7d74fc5b26242152958bd3def7445fdf0cd5c329cf179a79dd5a88e&=&format=webp&quality=lossless
+                    " alt="OK-IT Logo" class="footer-logo">
+                </a>
+                <p>ร้านค้าตัวแทนจำหน่ายเกม PC และคอนโซลของแท้ ราคาถูก จัดส่งรวดเร็ว เชื่อถือได้ 100%</p>
+            </div>
+            <div class="footer-column">
+                <h4>ลิงก์ด่วน</h4>
+                <ul>
+                    <li><a href="store.html">ร้านค้าทั้งหมด</a></li>
+                    <li><a href="how-to-buy.html">วิธีสั่งซื้อ</a></li>
+                    <li><a href="login.html">บัญชีของฉัน</a></li>
+                    <li><a href="#">ติดต่อเรา</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>แพลตฟอร์ม</h4>
+                <ul>
+                    <li><a href="platform.html?platform=PC">PC / Steam</a></li>
+                    <li><a href="platform.html?platform=PlayStation">PlayStation</a></li>
+                    <li><a href="platform.html?platform=Xbox">Xbox</a></li>
+                    <li><a href="platform.html?platform=Nintendo">Nintendo</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>ติดตามเรา</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 OK-IT Game Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
