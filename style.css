@@ -25,9 +25,6 @@ body {
 /* --- (คงไว้) ใช้วิธีนี้ดัน Footer แทน --- */
 main {
     min-height: calc(100vh - 350px); 
-    /* (หมายเหตุ) 350px คือค่าประมาณความสูง Header+Footer
-       ถ้า Footer ยังลอย ให้เพิ่มค่านี้นิดหน่อย
-    */
 }
 
 a { text-decoration: none; color: inherit; transition: var(--transition-fast); }
@@ -1056,7 +1053,7 @@ img { max-width: 100%; display: block; }
     padding: 0 2rem;
 }
 .footer-column .footer-logo {
-    height: 50px;
+    height: 300px;
     width: auto;
     margin-bottom: 1rem;
 }
@@ -1306,5 +1303,21 @@ img { max-width: 100%; display: block; }
     padding: 1rem;
     text-align: center;
     color: #888;
+}
+.main-nav .logo img {
+    height: 100px; /* สามารถเปลี่ยนเป็น 40px, 60px, ฯลฯ */
+    width: auto;  /* ปล่อยเป็น auto เพื่อให้สัดส่วนถูกต้อง */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.platform-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-top: 2.5rem; /* เว้นระยะห่างก่อนเริ่มหมวดใหม่ */
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
 }
 /* --- จบไฟล์ style.css --- */

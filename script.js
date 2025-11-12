@@ -9,7 +9,7 @@ const allProducts = [
         image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3170610/header.jpg?t=1752684565',
         description: 'เติม 5900 FC Points สำหรับเกม EA SPORTS FC 26 บนแพลตฟอร์ม Xbox One และ Xbox Series X/S',
         tags: ['Top-up'],
-        genres: ['Sport'] // (ใหม่)
+        genres: ['Sport'] 
     },
     {
         id: 2,
@@ -20,7 +20,9 @@ const allProducts = [
         image: 'https://image.api.playstation.com/vulcan/ap/rnd/202401/2211/40e7cfd126a11fe5118310ebce6d9b3a23e7cabaca717217.png',
         description: 'สัมผัสประสบการณ์เกม Action RPG สุดมันส์ในฐานะ EVE กับภารกิจกอบกู้โลกใน Stellar Blade',
         tags: ['Best Seller'],
-        genres: ['Action', 'RPG'] // (ใหม่)
+        genres: ['Action', 'RPG', 'Open World'], 
+        largeImage: 'https://wallpapercave.com/wp/wp13797968.jpg',
+        discount: '-15%'
     },
     {
         id: 3,
@@ -31,8 +33,8 @@ const allProducts = [
         image: 'https://image.api.playstation.com/vulcan/ap/rnd/202412/1301/308f8421ff74f3b061b231defc364d3f01e1710ea6fe6876.png',
         description: 'ส่วนขยายที่ทุกคนรอคอยของ Elden Ring ที่จะพาคุณไปสู่ดินแดนเงา (Shadow Land)',
         tags: ['Special Deal', 'DLC'],
-        genres: ['Action', 'RPG', 'Open World'], // (ใหม่)
-        largeImage: 'https://image.api.playstation.com/vulcan/ap/rnd/202412/1301/308f8421ff74f3b061b231defc364d3f01e1710ea6fe6876.png',
+        genres: ['Action', 'RPG', 'Open World'], 
+        largeImage: 'https://images3.alphacoders.com/135/1353566.jpeg',
         discount: '-15%'
     },
     {
@@ -44,7 +46,7 @@ const allProducts = [
         image: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/page_bg_raw.jpg?t=1760601605',
         description: 'เกม Action RPG ที่สร้างจากตำนานไซอิ๋ว สวมบทบาทเป็นเห้งเจีย (Wukong)',
         tags: ['Best Seller'],
-        genres: ['Action', 'RPG', 'Soul-like'] // (ใหม่)
+        genres: ['Action', 'RPG', 'Soul-like'] 
     },
     {
         id: 5,
@@ -55,7 +57,7 @@ const allProducts = [
         image: 'https://cdn.salla.sa/nEddBy/SzsRGaASP53QX4QXbCAa2Lhfh2aEZoK1WBLHqioB.png',
         description: 'บัตรเติมเงินมูลค่า $50 สำหรับ Nintendo eShop',
         tags: ['Top-up'],
-        genres: ['Top-up'] // (ใหม่)
+        genres: ['Top-up'] 
     },
     {
         id: 6,
@@ -63,10 +65,10 @@ const allProducts = [
         platform: 'PlayStation',
         type: 'Game',
         price: 1490.00,
-        image: 'https://image.api.playstation.com/vulcan/ap/rnd/202509/0421/7b29684b4459ddccd5f00633d21f58cbaad699b955a43fda.jpg',
+        image: 'https://images5.alphacoders.com/133/1337070.jpeg',
         description: 'เข้าร่วมหน่วย Helldivers และต่อสู้เพื่ออิสรภาพในกาแล็กซีที่เต็มไปด้วยศตรู',
         tags: ['Best Seller'],
-        genres: ['Action', 'Co-op', 'Shooter'] // (ใหม่)
+        genres: ['Action', 'Co-op', 'Shooter'] 
     },
     {
         id: 7,
@@ -74,10 +76,10 @@ const allProducts = [
         platform: 'PC',
         type: 'Top-up',
         price: 1000.00,
-        image: 'https://www.getsteamwallet.com/cdn-cgi/image/fit=scale-down,w=1920,q=85,f=auto,anim=false,sharpen=0,onerror=redirect,metadata=none/storage/product_groups/0mGiqUhquq8swhJkA0ELYKt1L5z1Tkr5PS2dAhLd.jpeg?md-1646932855',
+        image: 'https://www.getsteamwallet.com/cdn-cgi/image/fit=scale-down,w=1920,q=85,f=auto,anim=false,sharpen=0,onerror=redirect,metadata=none/storage/product_groups/0mGiqUhquq8swhJkA0ELYKt1L5z1Tkr5PS2dAhLd.jpeg?md=1646932855',
         description: 'บัตรเติมเงิน Steam Wallet มูลค่า 1,000 บาท',
         tags: ['Top-up'],
-        genres: ['Top-up'] // (ใหม่)
+        genres: ['Top-up'] 
     },
     {
         id: 8,
@@ -88,7 +90,7 @@ const allProducts = [
         image: 'https://cms-assets.xboxservices.com/assets/62/6d/626d1db3-32b8-43bc-adbb-63ee3bb564ad.jpg?n=XboxGamePass-Poster-720x1080.jpg?q=90&o=f&w=80&h=128',
         description: 'เล่นเกมกว่า 100+ เกมบน Xbox, PC และ Cloud Gaming',
         tags: ['Top-up'],
-        genres: ['Subscription'] // (ใหม่)
+        genres: ['Subscription'] 
     },
     {
         id: 9, 
@@ -99,7 +101,7 @@ const allProducts = [
         image: 'https://cdn1.epicgames.com/offer/77f2b98e2cef40c8a7437518bf420e47/EGS_Cyberpunk2077_CDPROJEKTRED_S1_03_2560x1440-359e77d3cd0a40aebf3bbc130d14c5c7',
         description: 'เกม Open-world RPG ในมหานคร Night City ที่เต็มไปด้วยอำนาจ, เสน่ห์ และการดัดแปลงร่างกาย',
         tags: ['Special Deal'],
-        genres: ['Action', 'RPG', 'Open World'], // (ใหม่)
+        genres: ['Action', 'RPG', 'Open World'], 
         largeImage: 'https://cdn1.epicgames.com/offer/77f2b98e2cef40c8a7437518bf420e47/EGS_Cyberpunk2077_CDPROJEKTRED_S1_03_2560x1440-359e77d3cd0a40aebf3bbc130d14c5c7',
         discount: '-50%'
     }
@@ -162,7 +164,8 @@ function renderProductGrid(products, containerId) {
 
     grid.innerHTML = '';
     if (products.length === 0) {
-        grid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: #666;">ไม่พบสินค้าที่ตรงกับเงื่อนไข</p>';
+        // (แก้ไข) ถ้าไม่มีสินค้าในหมวดนั้น ให้แสดงข้อความ
+        grid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: #888; padding: 2rem 0;">ไม่มีสินค้าในหมวดนี้</p>';
         return;
     }
     
@@ -410,29 +413,128 @@ function renderCheckoutSummary() {
     if (installmentDetails) installmentDetails.innerHTML = '';
 }
 
+// (แก้ไข) VVVVVVVVVV แก้ไขฟังก์ชันนี้ VVVVVVVVVV
+function renderAdditionalHeroSlides() {
+    // ID ของสินค้าที่มีสไลด์อยู่แล้วใน HTML (Wukong ID 4, Elden Ring ID 3)
+    const existingSlideProductIds = [3, 4]; 
+    
+    // กรองสินค้าที่ "ยังไม่มี" สไลด์ และ "ไม่ใช่ Top-up"
+    const productsToRender = allProducts.filter(p => 
+        !existingSlideProductIds.includes(p.id) && p.type !== 'Top-up'
+    );
+
+    const banner = document.querySelector('.hero-banner');
+    const nextButton = document.querySelector('.hero-next'); // เราจะแทรกสไลด์ "ก่อน" ปุ่มนี้
+
+    if (!banner || !nextButton) return; // ถ้าหาไม่เจอ ก็ไม่ทำอะไร
+
+    productsToRender.forEach(product => {
+        const newSlide = document.createElement('div');
+        newSlide.className = 'hero-slide';
+        
+        // --- (แก้ไข) VVVVVV เพิ่ม logic ตรวจสอบ videoUrl VVVVVV ---
+        if (product.videoUrl) {
+            // 1. ถ้ามี videoUrl: สร้างสไลด์แบบ <iframe>
+            newSlide.innerHTML = `
+                <iframe class="hero-video-iframe" 
+                 src="${product.videoUrl}" 
+                 frameborder="0" 
+                 allow="autoplay; encrypted-media" 
+                 allowfullscreen>
+                </iframe>
+                <div class="video-overlay"></div> 
+                <div class="hero-content">
+                   <h2>${product.name}</h2>
+                   <p>${product.description.split('.')[0]}</p>
+                   <a href="product-detail.html?id=${product.id}" class="btn btn-primary">ซื้อเลย</a>
+                </div>
+            `;
+        } else {
+            // 2. ถ้าไม่มี videoUrl: สร้างสไลด์แบบ background-image (เหมือนเดิม)
+            const imageUrl = product.largeImage || product.image;
+            newSlide.style.backgroundImage = `url('${imageUrl}')`;
+            newSlide.style.backgroundSize = 'cover';
+            newSlide.style.backgroundPosition = 'center';
+
+            newSlide.innerHTML = `
+                <div class="video-overlay"></div> 
+                <div class="hero-content">
+                   <h2>${product.name}</h2>
+                   <p>${product.description.split('.')[0]}</p>
+                   <a href="product-detail.html?id=${product.id}" class="btn btn-primary">ซื้อเลย</a>
+                </div>
+            `;
+        }
+        // --- (แก้ไข) ^^^^^^^^^^ จบ logic ^^^^^^^^^^ ---
+        
+        banner.insertBefore(newSlide, nextButton);
+    });
+}
+// (แก้ไข) ^^^^^^^^^^ จบส่วนฟังก์ชันที่แก้ไข ^^^^^^^^^^
+
 // ตรวจสอบว่าเราอยู่หน้าไหน
 const currentPage = window.location.pathname.split('/').pop();
 
 if (currentPage === 'index.html' || currentPage === '') {
     // --- หน้าแรก ---
+    
+    // (ใหม่) VVVVVVVVVV เรียกใช้ฟังก์ชันที่เพิ่มมา VVVVVVVVVV
+    // ต้องเรียกใช้ฟังก์ชันนี้ "ก่อน" ที่จะ querySelectorAll '.hero-slide'
+    // เพื่อให้สไลด์ทั้งหมดถูกสร้างขึ้นมาก่อน
+    renderAdditionalHeroSlides();
+    // (ใหม่) ^^^^^^^^^^ จบส่วนที่เรียกใช้ ^^^^^^^^^^
+
     const bestSellers = allProducts.filter(p => p.tags.includes('Best Seller'));
     renderProductCarousel(bestSellers, 'product-carousel-bestsellers');
     
-    const heroSlides = document.querySelectorAll('.hero-slide');
+    // บรรทัดนี้จะดึงสไลด์ทั้งหมด (รวม 2 อันเดิม และสไลด์ใหม่ที่เพิ่งสร้าง)
+    const heroSlides = document.querySelectorAll('.hero-slide'); 
     const heroPrev = document.querySelector('.hero-prev');
     const heroNext = document.querySelector('.hero-next');
     let currentHeroSlide = 0;
+    let autoSlideInterval; // (เพิ่ม) ประกาศตัวแปรสำหรับ autoplay
 
     function showHeroSlide(index) {
         if (!heroSlides.length) return;
+        
+        // (แก้ไข) คำนวณ index ให้วนลูป
+        if (index >= heroSlides.length) {
+            currentHeroSlide = 0;
+        } else if (index < 0) {
+            currentHeroSlide = heroSlides.length - 1;
+        } else {
+            currentHeroSlide = index;
+        }
+
         heroSlides.forEach(slide => slide.classList.remove('active'));
-        if (index >= heroSlides.length) currentHeroSlide = 0;
-        else if (index < 0) currentHeroSlide = heroSlides.length - 1;
-        else currentHeroSlide = index;
         heroSlides[currentHeroSlide].classList.add('active');
     }
-    if (heroNext) heroNext.addEventListener('click', () => showHeroSlide(currentHeroSlide + 1));
-    if (heroPrev) heroPrev.addEventListener('click', () => showHeroSlide(currentHeroSlide - 1));
+
+    // (เพิ่ม) ฟังก์ชันสำหรับสไลด์ถัดไป (สำหรับ autoplay)
+    function nextHeroSlide() {
+        showHeroSlide(currentHeroSlide + 1);
+    }
+
+    // (เพิ่ม) ฟังก์ชันเริ่ม autoplay
+    function startAutoplay() {
+        clearInterval(autoSlideInterval); // เคลียร์ของเก่าก่อน
+        autoSlideInterval = setInterval(nextHeroSlide, 5000); // 5000ms = 5 วินาที
+    }
+
+    if (heroNext) heroNext.addEventListener('click', () => {
+        nextHeroSlide();
+        startAutoplay(); // รีเซ็ตตัวนับเวลาเมื่อกดเอง
+    });
+    if (heroPrev) heroPrev.addEventListener('click', () => {
+        showHeroSlide(currentHeroSlide - 1);
+        startAutoplay(); // รีเซ็ตตัวนับเวลาเมื่อกดเอง
+    });
+
+    startAutoplay(); // (เพิ่ม) เริ่ม autoplay เมื่อโหลดหน้า
+
+    // (แก้ไข) โค้ดเลื่อนสไลด์ autoplay จากครั้งก่อน (ย้ายมารวมกัน)
+    // (ส่วนนี้เป็นโค้ดเดิมของคุณที่ผมเพิ่มให้ครั้งที่แล้ว)
+
 
     const productCarousel = document.getElementById('product-carousel-bestsellers');
     const productPrevBtn = document.querySelector('.product-prev');
@@ -506,6 +608,7 @@ if (currentPage === 'index.html' || currentPage === '') {
     }
     // --- (จบส่วนที่แก้ไข) ---
 
+// (แก้ไข) VVVVVVVV อัปเดต logic หน้านี้ VVVVVVVV
 } else if (currentPage === 'platform.html') {
     // --- หน้า Platform ---
     const urlParams = new URLSearchParams(window.location.search);
@@ -516,14 +619,31 @@ if (currentPage === 'index.html' || currentPage === '') {
         const titleEl = document.getElementById('platform-title');
         if (titleEl) titleEl.textContent = `เกมสำหรับ ${platform}`;
         
-        const platformProducts = allProducts.filter(p => p.platform === platform);
+        // (แก้ไข) VVVVVVV กรอง p.type !== 'Top-up' ออก VVVVVVV
+        const platformProducts = allProducts.filter(p => p.platform === platform && p.type !== 'Top-up');
+        // (แก้ไข) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         renderProductGrid(platformProducts, 'product-grid-platform');
     }
+// (แก้ไข) ^^^^^^^^^^ จบส่วนที่แก้ไข ^^^^^^^^^^
 
 } else if (currentPage === 'topup.html') {
-    // --- หน้า Top-up ---
-    const topupProducts = allProducts.filter(p => p.type === 'Top-up');
-    renderProductGrid(topupProducts, 'product-grid-topup');
+    // --- (แก้ไข) หน้า Top-up ---
+    
+    // 1. กรองสินค้า 'Top-up' ทั้งหมด
+    const allTopupProducts = allProducts.filter(p => p.type === 'Top-up');
+
+    // 2. กรองย่อยตามแพลตฟอร์ม
+    const psTopup = allTopupProducts.filter(p => p.platform === 'PlayStation');
+    const pcTopup = allTopupProducts.filter(p => p.platform === 'PC');
+    const xboxTopup = allTopupProducts.filter(p => p.platform === 'Xbox');
+    const nintendoTopup = allTopupProducts.filter(p => p.platform === 'Nintendo');
+
+    // 3. Render ลงใน Grid ที่ถูกต้อง (ตาม ID ที่เราตั้งใน html)
+    renderProductGrid(psTopup, 'topup-grid-playstation');
+    renderProductGrid(pcTopup, 'topup-grid-pc');
+    renderProductGrid(xboxTopup, 'topup-grid-xbox');
+    renderProductGrid(nintendoTopup, 'topup-grid-nintendo');
+
 
 } else if (currentPage === 'product-detail.html') {
     // --- หน้า Product Detail ---
@@ -566,6 +686,7 @@ if (currentPage === 'index.html' || currentPage === '') {
         });
     }
     
+    // (ฟังก์ชันนี้ซ้ำกับฟังก์ชันด้านบน แต่ไม่เป็นไรเพราะมันถูกเรียกใช้ในหน้านี้เท่านั้น)
     function renderCheckoutSummary() {
         const container = document.getElementById('checkout-summary-items');
         const checkoutTotalPriceEl = document.getElementById('checkout-total-price');
