@@ -9,7 +9,7 @@ const allProducts = [
         image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3170610/header.jpg?t=1752684565',
         description: 'เติม 5900 FC Points สำหรับเกม EA SPORTS FC 26 บนแพลตฟอร์ม Xbox One และ Xbox Series X/S',
         tags: ['Top-up'],
-        genres: ['Sport'] 
+        genres: ['Sport'] // (ใหม่)
     },
     {
         id: 2,
@@ -20,9 +20,7 @@ const allProducts = [
         image: 'https://image.api.playstation.com/vulcan/ap/rnd/202401/2211/40e7cfd126a11fe5118310ebce6d9b3a23e7cabaca717217.png',
         description: 'สัมผัสประสบการณ์เกม Action RPG สุดมันส์ในฐานะ EVE กับภารกิจกอบกู้โลกใน Stellar Blade',
         tags: ['Best Seller'],
-        genres: ['Action', 'RPG', 'Open World'], 
-        largeImage: 'https://wallpapercave.com/wp/wp13797968.jpg',
-        discount: '-15%'
+        genres: ['Action', 'RPG'] // (ใหม่)
     },
     {
         id: 3,
@@ -33,8 +31,8 @@ const allProducts = [
         image: 'https://image.api.playstation.com/vulcan/ap/rnd/202412/1301/308f8421ff74f3b061b231defc364d3f01e1710ea6fe6876.png',
         description: 'ส่วนขยายที่ทุกคนรอคอยของ Elden Ring ที่จะพาคุณไปสู่ดินแดนเงา (Shadow Land)',
         tags: ['Special Deal', 'DLC'],
-        genres: ['Action', 'RPG', 'Open World'], 
-        largeImage: 'https://images3.alphacoders.com/135/1353566.jpeg',
+        genres: ['Action', 'RPG', 'Open World'], // (ใหม่)
+        largeImage: 'https://image.api.playstation.com/vulcan/ap/rnd/202412/1301/308f8421ff74f3b061b231defc364d3f01e1710ea6fe6876.png',
         discount: '-15%'
     },
     {
@@ -46,7 +44,7 @@ const allProducts = [
         image: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/page_bg_raw.jpg?t=1760601605',
         description: 'เกม Action RPG ที่สร้างจากตำนานไซอิ๋ว สวมบทบาทเป็นเห้งเจีย (Wukong)',
         tags: ['Best Seller'],
-        genres: ['Action', 'RPG', 'Soul-like'] 
+        genres: ['Action', 'RPG', 'Soul-like'] // (ใหม่)
     },
     {
         id: 5,
@@ -57,7 +55,7 @@ const allProducts = [
         image: 'https://cdn.salla.sa/nEddBy/SzsRGaASP53QX4QXbCAa2Lhfh2aEZoK1WBLHqioB.png',
         description: 'บัตรเติมเงินมูลค่า $50 สำหรับ Nintendo eShop',
         tags: ['Top-up'],
-        genres: ['Top-up'] 
+        genres: ['Top-up'] // (ใหม่)
     },
     {
         id: 6,
@@ -65,10 +63,10 @@ const allProducts = [
         platform: 'PlayStation',
         type: 'Game',
         price: 1490.00,
-        image: 'https://images5.alphacoders.com/133/1337070.jpeg',
+        image: 'https://image.api.playstation.com/vulcan/ap/rnd/202509/0421/7b29684b4459ddccd5f00633d21f58cbaad699b955a43fda.jpg',
         description: 'เข้าร่วมหน่วย Helldivers และต่อสู้เพื่ออิสรภาพในกาแล็กซีที่เต็มไปด้วยศตรู',
         tags: ['Best Seller'],
-        genres: ['Action', 'Co-op', 'Shooter'] 
+        genres: ['Action', 'Co-op', 'Shooter'] // (ใหม่)
     },
     {
         id: 7,
@@ -76,10 +74,10 @@ const allProducts = [
         platform: 'PC',
         type: 'Top-up',
         price: 1000.00,
-        image: 'https://www.getsteamwallet.com/cdn-cgi/image/fit=scale-down,w=1920,q=85,f=auto,anim=false,sharpen=0,onerror=redirect,metadata=none/storage/product_groups/0mGiqUhquq8swhJkA0ELYKt1L5z1Tkr5PS2dAhLd.jpeg?md=1646932855',
+        image: 'https://www.getsteamwallet.com/cdn-cgi/image/fit=scale-down,w=1920,q=85,f=auto,anim=false,sharpen=0,onerror=redirect,metadata=none/storage/product_groups/0mGiqUhquq8swhJkA0ELYKt1L5z1Tkr5PS2dAhLd.jpeg?md-1646932855',
         description: 'บัตรเติมเงิน Steam Wallet มูลค่า 1,000 บาท',
         tags: ['Top-up'],
-        genres: ['Top-up'] 
+        genres: ['Top-up'] // (ใหม่)
     },
     {
         id: 8,
@@ -90,23 +88,203 @@ const allProducts = [
         image: 'https://cms-assets.xboxservices.com/assets/62/6d/626d1db3-32b8-43bc-adbb-63ee3bb564ad.jpg?n=XboxGamePass-Poster-720x1080.jpg?q=90&o=f&w=80&h=128',
         description: 'เล่นเกมกว่า 100+ เกมบน Xbox, PC และ Cloud Gaming',
         tags: ['Top-up'],
-        genres: ['Subscription'] 
+        genres: ['Subscription'] // (ใหม่)
     },
     {
-        id: 9, 
+        id: 9,
         name: 'Cyberpunk 2077: Ultimate Edition',
         platform: 'PC',
         type: 'Game',
-        price: 1495.00, 
+        price: 1495.00,
         image: 'https://cdn1.epicgames.com/offer/77f2b98e2cef40c8a7437518bf420e47/EGS_Cyberpunk2077_CDPROJEKTRED_S1_03_2560x1440-359e77d3cd0a40aebf3bbc130d14c5c7',
         description: 'เกม Open-world RPG ในมหานคร Night City ที่เต็มไปด้วยอำนาจ, เสน่ห์ และการดัดแปลงร่างกาย',
         tags: ['Special Deal'],
-        genres: ['Action', 'RPG', 'Open World'], 
+        genres: ['Action', 'RPG', 'Open World'], // (ใหม่)
         largeImage: 'https://cdn1.epicgames.com/offer/77f2b98e2cef40c8a7437518bf420e47/EGS_Cyberpunk2077_CDPROJEKTRED_S1_03_2560x1440-359e77d3cd0a40aebf3bbc130d14c5c7',
         discount: '-50%'
-    }
-    
-    
+    },
+    {
+        id: 10,
+        name: 'Battlefield 6',
+        platform: 'PC',
+        type: 'Game',
+        price: 3000.00,
+        image: 'https://cdn.cdkeys.com/496x700/media/catalog/product/b/a/battlefield_6_pc_cdkeys_2.png',
+        description: 'เกม shooting สมจริง ',
+        tags: ['Special Deal'],
+        genres: ['Action', 'Shooting', 'Open World'], // (ใหม่)
+        largeImage: 'https://cdn.cdkeys.com/496x700/media/catalog/product/b/a/battlefield_6_pc_cdkeys_2.png',
+        discount: '-20%'
+    },
+    {
+        id: 11,
+        name: 'Palworld PC Key',
+        platform: 'PC',
+        type: 'Game',
+        price: 781.00,
+        image: 'https://cdn.cdkeys.com/496x700/media/catalog/product/n/e/new_project_-_2024-01-22t144018.803_1.jpg',
+        description: 'เกมแนวเอาชีวิตรอด ประดิษฐ์สิ่งของ และจับมอนสเตอร์แบบโอเพ่นเวิลด์ที่มีผู้เล่นหลายคน ผู้เล่นสามารถสำรวจโลกอันกว้างใหญ่ที่เต็มไปด้วยสิ่งมีชีวิตลึกลับที่เรียกว่า "Pals" ซึ่งมีลักษณะคล้ายสัตว์หรือสัตว์ในตำนาน ',
+        tags: ['Special Deal'],
+        genres: ['Action', 'Shooting', 'Open World'], // (ใหม่)
+        largeImage: 'https://cdn.cdkeys.com/496x700/media/catalog/product/b/a/battlefield_6_pc_cdkeys_2.png',
+        discount: '-20%'
+    },
+    {
+        id: 12,
+        name: 'Minecraft',
+        platform: 'PC',
+        type: 'Game',
+        price: 1024.00,
+        image: 'https://cdn.cdkeys.com/496x700/media/catalog/product/n/e/new_project_88__2_1.jpg',
+        description: 'สำรวจโลกที่สร้างขึ้นจากบล็อกทรงลูกบาศก์ที่ไม่มีที่สิ้นสุด และมีปฏิสัมพันธ์กับสภาพแวดล้อมและสิ่งมีชีวิตต่างๆ ในเกมได้อย่างอิสระ ',
+        tags: ['Special Deal'],
+        genres: ['Open World'], // (ใหม่)
+        largeImage: 'https://cdn.cdkeys.com/496x700/media/catalog/product/n/e/new_project_88__2_1.jpg',
+        discount: '-60%'
+    },
+    {
+        id: 13,
+        name: 'Marvels Spider-Man Remastered',
+        platform: 'PC',
+        type: 'Game',
+        price: 1024.00,
+        image: 'https://cdn.cdkeys.com/496x700/media/catalog/product/s/g/sgvsvsfv.jpg',
+        description: 'สำรวจโลกที่สร้างขึ้นจากบล็อกทรงลูกบาศก์ที่ไม่มีที่สิ้นสุด และมีปฏิสัมพันธ์กับสภาพแวดล้อมและสิ่งมีชีวิตต่างๆ ในเกมได้อย่างอิสระ ',
+        tags: ['Special Deal'],
+        genres: ['Open World'], // (ใหม่)
+        largeImage: 'https://cdn.cdkeys.com/496x700/media/catalog/product/s/g/sgvsvsfv.jpg',
+        discount: '-60%'
+    },
+    {
+        id: 14,
+        name: 'Europa Universalis V PC',
+        platform: 'PC',
+        type: 'Game',
+        price: 1724.29,
+        image: 'https://cdn.cdkeys.com/496x700/media/catalog/product/e/u/europa_universalis_v.png',
+        description: 'สุดยอดเกมวางแผนเชิงลึกจาก Paradox Interactive ที่ให้คุณสร้างจักรวรรดิในแบบของคุณเอง! ',
+        tags: ['Special Deal'],
+        genres: ['Historical Simulation'], // (ใหม่)
+        largeImage: 'https://cdn.cdkeys.com/496x700/media/catalog/product/e/u/europa_universalis_v.png',
+        discount: '-20%'
+    },
+    {
+        id: 15,
+        name: 'Escape the Backrooms PC',
+        platform: 'PC',
+        type: 'Game',
+        price: 224.11,
+        image: 'https://cdn.cdkeys.com/496x700/media/catalog/product/e/s/escape_the_backrooms.jpg',
+        description: 'ติดอยู่ในโลกสุดหลอนของ “Backrooms” — ทางเดินสีเหลืองไม่มีที่สิ้นสุด เสียงไฟฟ้าครางอยู่ตลอดเวลา และบางสิ่ง... กำลังตามคุณอยู่',
+        tags: ['Special Deal'],
+        genres: ['Horror, Survival, Exploration, Co-op'], // (ใหม่)
+        largeImage: 'https://cdn.cdkeys.com/496x700/media/catalog/product/e/s/escape_the_backrooms.jpg',
+        discount: '-60%'
+    },
+    {
+        id: 16,
+        name: 'Detroit: Become Human PC (Steam)',
+        platform: 'PC',
+        type: 'Game',
+        price: 286.40,
+        image: 'https://cdn.cdkeys.com/496x700/media/catalog/product/c/o/co2228_7_.jpg',
+        description: 'ก้าวเข้าสู่โลกอนาคตที่เทคโนโลยี Android กลายเป็นส่วนหนึ่งของชีวิตประจำวัน Detroit: Become Human พาผู้เล่นควบคุมตัวละคร Android หลายตัว และตัดสินใจทุกทางเลือกที่จะส่งผลต่อชะตากรรมของพวกเขา ',
+        tags: ['Special Deal'],
+        genres: ['Interactive Drama / Action-Adventure'], // (ใหม่)
+        largeImage: 'https://cdn.cdkeys.com/496x700/media/catalog/product/c/o/co2228_7_.jpg',
+        discount: '-70%'
+    },
+    {
+        id: 17,
+        name: 'DOOM: The Dark Ages Premium Edition PC',
+        platform: 'PC',
+        type: 'Game',
+        price: 3100.00,
+        image: 'https://image.api.playstation.com/vulcan/ap/rnd/202501/1405/1893e77387eec1591406d71c98f8d4074b7c32664c3bf5af.jpg',
+        description: 'ย้อนเวลากลับสู่ยุคมืดแห่งความโหดร้ายใน DOOM: The Dark Ages! ผสมผสานแอ็กชันสุดมันส์และเรื่องราวเข้มข้น คุณจะได้สวมบทนักรบผู้กล้า ต่อสู้กับปีศาจและสิ่งชั่วร้ายที่คุกคามอาณาจักร ค้นพบอาวุธล้ำยุค สกิลใหม่ๆ และภารกิจสุดท้าทายที่จะทดสอบความสามารถของคุณ',
+        tags: ['Special Deal'],
+        genres: ['Action, Hack and Slash, RPG'], // (ใหม่)
+        largeImage: 'https://image.api.playstation.com/vulcan/ap/rnd/202501/1405/1893e77387eec1591406d71c98f8d4074b7c32664c3bf5af.jpg',
+        discount: '-40%'
+    },
+    {
+        id: 18,
+        name: 'Atelier Resleriana: The Red Alchemist & the White Guardian Ultimate Edition PC',
+        platform: 'PC',
+        type: 'Game',
+        price: 3080.00,
+        image: 'https://www.gamesrig.com/img/index/atelier-resleriana-the-red-alchemist-the-white-guardian-digital-deluxe-edition-cover.jpg',
+        description: 'สำรวจโลกที่สร้างขึ้นจากบล็อกทรงลูกบาศก์ที่ไม่มีที่สิ้นสุด และมีปฏิสัมพันธ์กับสภาพแวดล้อมและสิ่งมีชีวิตต่างๆ ในเกมได้อย่างอิสระ ',
+        tags: ['Special Deal'],
+        genres: ['Role‑playing Game (RPG), Simulation (Shop Management)'], // (ใหม่)
+        largeImage: 'https://www.gamesrig.com/img/index/atelier-resleriana-the-red-alchemist-the-white-guardian-digital-deluxe-edition-cover.jpg',
+        discount: '-10%'
+    },
+    {
+        id: 19,
+        name: 'FAIRY TAIL 2 Ultimate Edition PC Key',
+        platform: 'PC',
+        type: 'Game',
+        price: 3050.17,
+        image: 'https://gpstatic.com/acache/72/94/3/us/packshot-970c9bddb9601d0b96192a19abba4582.jpg',
+        description: 'ย้อนเข้าสู่บทสรุปของอาณาจักรฟิออร์! ใน FAIRY TAIL 2 Ultimate Edition คุณจะได้ร่วมเดินทางกับกิลด์ Fairy Tail ใน “Alvarez Empire Arc” ซึ่งเป็นพล็อตสุดเข้มข้นของซีรีส์ต้นฉบับ',
+        tags: ['Special Deal'],
+        genres: ['Action, RPG, Adventure'], // (ใหม่)
+        largeImage: 'https://gpstatic.com/acache/72/94/3/us/packshot-970c9bddb9601d0b96192a19abba4582.jpg',
+        discount: '-20%'
+    },
+    {
+        id: 20,
+        name: 'Monster Hunter Wilds',
+        platform: 'PC',
+        type: 'Game',
+        price: 1823.00,
+        image: 'https://imgproxy.eneba.games/zdBPaVwChsLxw3BKNNvtMVRBzV9YrRbBjjPWxSsJcHI/rs:fit:350/ar:1/czM6Ly9wcm9kdWN0/cy5lbmViYS5nYW1l/cy9wcm9kdWN0cy9X/TlhJa3VlNnhXdWFi/RzZ3dGdPZDlsVDZU/UlJweUNMazN2Mmgw/Rnp6UWNBLmpwZw',
+        description: 'สำรวจโลกที่สร้างขึ้นจากบล็อกทรงลูกบาศก์ที่ไม่มีที่สิ้นสุด และมีปฏิสัมพันธ์กับสภาพแวดล้อมและสิ่งมีชีวิตต่างๆ ในเกมได้อย่างอิสระ ',
+        tags: ['Special Deal'],
+        genres: ['Open World , RPG, Action'], // (ใหม่)
+        largeImage: 'https://imgproxy.eneba.games/zdBPaVwChsLxw3BKNNvtMVRBzV9YrRbBjjPWxSsJcHI/rs:fit:350/ar:1/czM6Ly9wcm9kdWN0/cy5lbmViYS5nYW1l/cy9wcm9kdWN0cy9X/TlhJa3VlNnhXdWFi/RzZ3dGdPZDlsVDZU/UlJweUNMazN2Mmgw/Rnp6UWNBLmpwZw',
+        discount: '-60%'
+    },
+    {
+        id: 21,
+        name: 'Hogwarts Legacy Deluxe Edition PC (WW)',
+        platform: 'PC',
+        type: 'Game',
+        price: 303.67,
+        image: 'https://cdn.cdkeys.com/496x700/media/catalog/product/c/a/capsule_616x353_1__1_3_1_1.jpg',
+        description: 'Hogwarts Legacy เป็นเกม แอ็กชัน RPG แบบโลกเปิด (Open-world Action RPG) ที่ผู้เล่นจะได้รับบทเป็นนักเรียนในยุคปี 1800 ของโรงเรียนคาถาพ่อมดแม่มดและเวทมนตร์ศาสตร์ฮอกวอตส์ ผู้เล่นสามารถ สำรวจฮอกวอตส์และพื้นที่โดยรอบ, เรียนรู้คาถา, ปรุงยา, ฝึกฝนสัตว์มหัศจรรย์, และพัฒนาตัวละคร ของตัวเองได้ตามต้องการ',
+        tags: ['Special Deal'],
+        genres: ['Open World , action , RPG'], // (ใหม่)
+        largeImage: 'https://cdn.cdkeys.com/496x700/media/catalog/product/c/a/capsule_616x353_1__1_3_1_1.jpg',
+        discount: '-30%'
+    },
+    {
+        id: 22,
+        name: 'Valorant 5350 VP ',
+        platform: 'PC',
+        type: 'Top-up',
+        price: 1268.00,
+        image: 'https://imgproxy.eneba.games/5IaDcaXFgYHhZ8Gzg_jjY3k1KD_PY3LQXgFMG-lJ35s/rs:fit:350/ar:1/czM6Ly9wcm9kdWN0/cy5lbmViYS5nYW1l/cy9wcm9kdWN0cy9N/Q2ZQdEF6MmpEbDVN/c2hkTTlWbXphMHRB/b2JCbWZBNkY5TUkw/T19xN1pFLmpwZWc',
+        description: '',
+        tags: ['Special Deal'],
+        genres: ['FPS'], // (ใหม่)
+        largeImage: 'https://imgproxy.eneba.games/5IaDcaXFgYHhZ8Gzg_jjY3k1KD_PY3LQXgFMG-lJ35s/rs:fit:350/ar:1/czM6Ly9wcm9kdWN0/cy5lbmViYS5nYW1l/cy9wcm9kdWN0cy9N/Q2ZQdEF6MmpEbDVN/c2hkTTlWbXphMHRB/b2JCbWZBNkY5TUkw/T19xN1pFLmpwZWc',
+        discount: '-60%'
+    },
+    {
+        id: 23,
+        name: 'Forza Horizon 5 PS5',
+        platform: 'PlayStation',
+        type: 'game',
+        price: 2384.00,
+        image: 'https://cdn.cdkeys.com/496x700/media/catalog/product/u/n/untitled-1_6_8.jpg',
+        description: 'Forza Horizon คือซีรีส์เกมแข่งรถแบบโลกเปิดที่ผู้เล่นจะได้สัมผัสกับการแข่งขันที่หลากหลายและสำรวจโลกกว้างอันสวยงาม โดยมีภาคหลักอย่าง Forza Horizon 5 ซึ่งมีฉากหลังเป็นประเทศเม็กซิโก ที่เปิดโอกาสให้ผู้เล่นได้แข่งขันในเทศกาล Horizon Festival ที่มีชื่อเสียง',
+        tags: ['Best Seller'],
+        genres: ['Open World racing'], // (ใหม่)
+        largeImage: 'https://cdn.cdkeys.com/496x700/media/catalog/product/u/n/untitled-1_6_8.jpg',
+        discount: ''
+    },
 ];
 
 // ========== 2. ฟังก์ชันสำหรับ Render สินค้า (ใช้ซ้ำ) ==========
@@ -270,7 +448,7 @@ document.addEventListener('click', (e) => {
         e.preventDefault();
         const productId = parseInt(buyBtn.dataset.id);
         addToCart(productId); 
-        // window.location.href = 'checkout.html'; 
+
     }
     
     const removeBtn = e.target.closest('.cart-item-remove');
@@ -290,7 +468,6 @@ if (closeCartBtn) closeCartBtn.addEventListener('click', () => {
 
 // ========== 4. Logic การทำงานตามหน้า (Page-specific Logic) ==========
 
-// (อัปเดต) ฟังก์ชัน Render หน้ารายละเอียดสินค้า
 function renderProductDetail() {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = parseInt(urlParams.get('id'));
@@ -413,28 +590,23 @@ function renderCheckoutSummary() {
     if (installmentDetails) installmentDetails.innerHTML = '';
 }
 
-// (แก้ไข) VVVVVVVVVV แก้ไขฟังก์ชันนี้ VVVVVVVVVV
 function renderAdditionalHeroSlides() {
-    // ID ของสินค้าที่มีสไลด์อยู่แล้วใน HTML (Wukong ID 4, Elden Ring ID 3)
+
     const existingSlideProductIds = [3, 4]; 
-    
-    // กรองสินค้าที่ "ยังไม่มี" สไลด์ และ "ไม่ใช่ Top-up"
+
     const productsToRender = allProducts.filter(p => 
         !existingSlideProductIds.includes(p.id) && p.type !== 'Top-up'
     );
 
     const banner = document.querySelector('.hero-banner');
-    const nextButton = document.querySelector('.hero-next'); // เราจะแทรกสไลด์ "ก่อน" ปุ่มนี้
+    const nextButton = document.querySelector('.hero-next');
 
-    if (!banner || !nextButton) return; // ถ้าหาไม่เจอ ก็ไม่ทำอะไร
+    if (!banner || !nextButton) return;
 
     productsToRender.forEach(product => {
         const newSlide = document.createElement('div');
         newSlide.className = 'hero-slide';
-        
-        // --- (แก้ไข) VVVVVV เพิ่ม logic ตรวจสอบ videoUrl VVVVVV ---
         if (product.videoUrl) {
-            // 1. ถ้ามี videoUrl: สร้างสไลด์แบบ <iframe>
             newSlide.innerHTML = `
                 <iframe class="hero-video-iframe" 
                  src="${product.videoUrl}" 
@@ -450,7 +622,6 @@ function renderAdditionalHeroSlides() {
                 </div>
             `;
         } else {
-            // 2. ถ้าไม่มี videoUrl: สร้างสไลด์แบบ background-image (เหมือนเดิม)
             const imageUrl = product.largeImage || product.image;
             newSlide.style.backgroundImage = `url('${imageUrl}')`;
             newSlide.style.backgroundSize = 'cover';
@@ -470,19 +641,11 @@ function renderAdditionalHeroSlides() {
         banner.insertBefore(newSlide, nextButton);
     });
 }
-// (แก้ไข) ^^^^^^^^^^ จบส่วนฟังก์ชันที่แก้ไข ^^^^^^^^^^
-
-// ตรวจสอบว่าเราอยู่หน้าไหน
 const currentPage = window.location.pathname.split('/').pop();
 
 if (currentPage === 'index.html' || currentPage === '') {
-    // --- หน้าแรก ---
-    
-    // (ใหม่) VVVVVVVVVV เรียกใช้ฟังก์ชันที่เพิ่มมา VVVVVVVVVV
-    // ต้องเรียกใช้ฟังก์ชันนี้ "ก่อน" ที่จะ querySelectorAll '.hero-slide'
-    // เพื่อให้สไลด์ทั้งหมดถูกสร้างขึ้นมาก่อน
+
     renderAdditionalHeroSlides();
-    // (ใหม่) ^^^^^^^^^^ จบส่วนที่เรียกใช้ ^^^^^^^^^^
 
     const bestSellers = allProducts.filter(p => p.tags.includes('Best Seller'));
     renderProductCarousel(bestSellers, 'product-carousel-bestsellers');

@@ -293,7 +293,6 @@ img { max-width: 100%; display: block; }
 }
 .product-prev { left: -22px; }
 .product-next { right: -22px; }
-
 /* --- 6. Product Card (สไตล์การ์ดสินค้า ใช้ร่วมกัน) --- */
 /* --- 6. Product Card (สไตล์การ์ดสินค้า ใช้ร่วมกัน) --- */
 .product-card {
@@ -310,14 +309,18 @@ img { max-width: 100%; display: block; }
 
 .product-image { 
     position: relative; 
-    z-index: 1; /* (ใหม่) ให้อยู่หลังสุด */
+    /* (ลบ z-index: 1; ออกจากตรงนี้ ถ้ามี) */
 }
 .product-image-link { 
     display: block; 
     /* height: 200px; */     /* <-- 2. ลบความสูงคงที่ออก */
-    aspect-ratio: 4 / 5;  /* <-- 3. (แนะนำ) เพิ่มสัดส่วนภาพ (เช่น 4:5, 1:1, 16:9) */
+    aspect-ratio: 4 / 5;  /* <-- 3. (แนะนำ) เพิ่มสัดส่วนภาพ (เช่น 4:5) */
 }
-.product-image img { width: 100%; height: 100%; object-fit: cover; }
+.product-image img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* <-- 4. รูปจะเต็มพื้นที่ (อาจถูกตัดขอบเล็กน้อย) */
+}
 
 .add-to-cart-btn {
     position: absolute;
@@ -333,18 +336,18 @@ img { max-width: 100%; display: block; }
     cursor: pointer;
     transform: scale(0);
     transition: all 0.2s ease-out;
-    z-index: 3; /* (ใหม่) ให้ปุ่มอยู่บนสุดเสมอ */
+    z-index: 3; /* <-- 5. (สำคัญ) ให้ปุ่มอยู่บนสุด */
 }
 .product-card:hover .add-to-cart-btn { transform: scale(1); }
 .add-to-cart-btn:hover { background-color: var(--color-primary); }
 
-/* --- 4. แก้ไข product-info ให้อยู่ทับบนรูป --- */
+/* --- 6. (แก้ไข) ย้าย .product-info มาเป็น overlay --- */
 .product-info { 
     position: absolute; /* (ใหม่) จัดตำแหน่งแบบลอยทับ */
     bottom: 0;          /* (ใหม่) ให้อยู่ด้านล่าง */
-    left: 0;            /* (ใหม่) */
-    width: 100%;      /* (ใหม่) */
-    z-index: 2;         /* (ใหม่) ให้อยู่ทับรูป แต่หลังปุ่ม */
+    left: 0;
+    width: 100%;
+    z-index: 2;         /* (ใหม่) ให้อยู่หลังปุ่ม แต่ทับรูป */
     padding: 1rem; 
     background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); /* (ใหม่) เพิ่มเงาดำ */
     color: white;       /* (ใหม่) เปลี่ยนสีตัวอักษรหลักเป็นสีขาว */
@@ -1333,7 +1336,7 @@ img { max-width: 100%; display: block; }
     color: #777;
 }
 
-/* ข้อความ "ไม่พบ" */
+
 .search-no-results {
     padding: 1rem;
     text-align: center;
@@ -1355,5 +1358,3 @@ img { max-width: 100%; display: block; }
     border-bottom: 2px solid var(--color-accent);
     padding-bottom: 0.5rem;
 }
-
-/* --- จบไฟล์ style.css --- */
