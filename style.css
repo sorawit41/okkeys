@@ -536,7 +536,7 @@ img { max-width: 100%; display: block; }
     margin-bottom: 2rem;
 }
 .login-card-logo img {
-    height: 40px;
+    height: 100px;
     filter: brightness(0.1) contrast(1.2); /* กลับสีโลโก้ขาวเป็นดำ/ม่วง */
     opacity: 0.7;
 }
