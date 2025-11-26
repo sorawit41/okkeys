@@ -1,4 +1,5 @@
 /* --- 0. Global Setup --- */
+
 :root {
     --color-primary: #3b2a53; /* ม่วงเข้ม (แถบบน) */
     --color-secondary: #f4f4f8; /* เทาอ่อน (พื้นหลัง) */
@@ -78,7 +79,6 @@ img { max-width: 100%; display: block; }
     z-index: 1000;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     animation: slideInDown 0.5s ease-out;
-    
 }
 .main-nav { 
     display: flex; 
@@ -800,7 +800,7 @@ img { max-width: 100%; display: block; }
 }
 
 .checkout-summary, .payment-form {
-    background: white;
+    background: rgb(255, 255, 255);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-light);
@@ -1357,4 +1357,233 @@ img { max-width: 100%; display: block; }
     margin-bottom: 1.5rem;
     border-bottom: 2px solid var(--color-accent);
     padding-bottom: 0.5rem;
+}
+.profile-section {
+            padding: 40px 0;
+            background-color: #f8f9fa; 
+            min-height: 80vh;
+        }
+
+        .profile-container {
+            display: grid;
+            grid-template-columns: 280px 1fr; /* แบ่งซ้าย 280px ขวาเต็มที่เหลือ */
+            gap: 30px;
+        }
+
+        /* Sidebar */
+        .profile-sidebar {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+        }
+
+        .user-summary {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            background: #eee;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #555;
+        }
+
+        .user-name { font-weight: 600; font-size: 1.1rem; }
+        .user-email { color: #777; font-size: 0.9rem; }
+
+        .profile-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            transition: 0.3s;
+        }
+
+        .profile-menu a i { margin-right: 10px; width: 20px; text-align: center;}
+        
+        .profile-menu a:hover, .profile-menu a.active {
+            background-color: #eef2ff;
+            color: #007bff; /* สีหลักของเว็บ (แก้ตาม Theme คุณ) */
+            font-weight: 500;
+        }
+
+        .profile-menu a.logout { color: #dc3545; }
+        .profile-menu a.logout:hover { background-color: #fff5f5; }
+
+        /* Content Area */
+        .profile-content {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .content-header {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Kanit', sans-serif;
+        }
+        
+        /* Table สำหรับประวัติการซื้อ */
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .order-table th, .order-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .order-table th { background-color: #f8f9fa; font-weight: 500; }
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .status-success { background: #d4edda; color: #155724; }
+        .status-pending { background: #fff3cd; color: #856404; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profile-container { grid-template-columns: 1fr; }
+        }
+
+/* --- Success Modal (เพิ่มใหม่) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.success-box {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    transform: scale(0.8);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.active .success-box {
+    transform: scale(1);
+}
+
+.success-icon {
+    font-size: 5rem;
+    color: #2ecc71; /* สีเขียว */
+    margin-bottom: 1rem;
+    animation: bounceIn 0.8s;
+}
+
+.keys-container {
+    margin-top: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px dashed #ccc;
+    text-align: left;
+}
+
+.keys-container h3 {
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.keys-list {
+    max-height: 200px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.key-item {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+.game-name-key {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+    color: #555;
+}
+
+.code-box {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    color: var(--color-highlight);
+    background: #f0f0f5;
+    padding: 4px 8px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    display: block;
+    text-align: center;
+    border: 1px solid #ddd;
+    user-select: all; /* ให้ user copy ง่ายๆ */
+}
+
+.btn-full-width {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
 }

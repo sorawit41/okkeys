@@ -465,7 +465,125 @@ if (cartBtn) cartBtn.addEventListener('click', (e) => {
 if (closeCartBtn) closeCartBtn.addEventListener('click', () => {
     if (cartSidebar) cartSidebar.classList.remove('active');
 });
+// ========== 6. Logic สำหรับหน้า Admin (Admin Page Logic) ==========
 
+if (window.location.pathname.includes('admin.html')) {
+    
+    const adminTableBody = document.getElementById('admin-product-table');
+    const productModal = document.getElementById('product-modal');
+    const productForm = document.getElementById('product-form');
+    const totalCountEl = document.getElementById('total-products-count');
+
+    // Render ตารางสินค้า
+    function renderAdminTable() {
+        adminTableBody.innerHTML = '';
+        allProducts.forEach(product => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>#${product.id}</td>
+                <td><img src="${product.image}" alt="${product.name}"></td>
+                <td>${product.name}</td>
+                <td>${product.platform}</td>
+                <td>${product.price.toFixed(2)} ฿</td>
+                <td>
+                    <button class="action-btn btn-edit" onclick="editProduct(${product.id})"><i class="fa-solid fa-pen"></i></button>
+                    <button class="action-btn btn-delete" onclick="deleteProduct(${product.id})"><i class="fa-solid fa-trash"></i></button>
+                </td>
+            `;
+            adminTableBody.appendChild(tr);
+        });
+        totalCountEl.textContent = allProducts.length;
+    }
+
+    // เปิด Modal
+    window.openModal = function() { // ใช้ window. เพื่อให้ HTML เรียกใช้ได้
+        productForm.reset();
+        document.getElementById('p-id').value = ''; // เคลียร์ ID เพื่อบอกว่าเป็นโหมดเพิ่ม
+        document.getElementById('modal-title').textContent = 'เพิ่มสินค้าใหม่';
+        productModal.classList.add('active');
+    }
+
+    // ปิด Modal
+    window.closeModal = function() {
+        productModal.classList.remove('active');
+    }
+
+    // แก้ไขสินค้า
+    window.editProduct = function(id) {
+        const product = allProducts.find(p => p.id === id);
+        if(product) {
+            document.getElementById('p-id').value = product.id;
+            document.getElementById('p-name').value = product.name;
+            document.getElementById('p-price').value = product.price;
+            document.getElementById('p-platform').value = product.platform;
+            document.getElementById('p-type').value = product.type;
+            document.getElementById('p-image').value = product.image;
+            document.getElementById('p-desc').value = product.description;
+            document.getElementById('p-tags').value = product.tags.join(', ');
+            
+            document.getElementById('modal-title').textContent = 'แก้ไขสินค้า';
+            productModal.classList.add('active');
+        }
+    }
+
+    // ลบสินค้า
+    window.deleteProduct = function(id) {
+        if(confirm('คุณแน่ใจหรือไม่ที่จะลบสินค้านี้?')) {
+            allProducts = allProducts.filter(p => p.id !== id);
+            saveProductsToStorage();
+            renderAdminTable();
+        }
+    }
+
+    // บันทึกฟอร์ม (เพิ่ม/แก้ไข)
+    productForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const idInput = document.getElementById('p-id').value;
+        const name = document.getElementById('p-name').value;
+        const price = parseFloat(document.getElementById('p-price').value);
+        const platform = document.getElementById('p-platform').value;
+        const type = document.getElementById('p-type').value;
+        const image = document.getElementById('p-image').value;
+        const desc = document.getElementById('p-desc').value;
+        const tags = document.getElementById('p-tags').value.split(',').map(tag => tag.trim());
+
+        if (idInput) {
+            // โหมดแก้ไข
+            const index = allProducts.findIndex(p => p.id === parseInt(idInput));
+            if (index !== -1) {
+                allProducts[index] = { 
+                    ...allProducts[index], // เก็บค่าเดิมไว้ (เช่น genres)
+                    name, price, platform, type, image, description: desc, tags 
+                };
+            }
+        } else {
+            // โหมดเพิ่มใหม่
+            const newId = allProducts.length > 0 ? Math.max(...allProducts.map(p => p.id)) + 1 : 1;
+            const newProduct = {
+                id: newId,
+                name, price, platform, type, image, description: desc, tags,
+                genres: [] // ใส่ว่างไว้ก่อน
+            };
+            allProducts.push(newProduct);
+        }
+
+        saveProductsToStorage();
+        renderAdminTable();
+        closeModal();
+    });
+
+    // ปุ่ม Reset Data (กรณีข้อมูลพัง)
+    window.resetDefaultData = function() {
+        if(confirm('การกระทำนี้จะลบข้อมูลที่แก้ไขทั้งหมดและกลับไปเป็นค่าเริ่มต้น ยืนยันหรือไม่?')) {
+            localStorage.removeItem('okItProducts');
+            window.location.reload();
+        }
+    }
+
+    // เรียกทำงานครั้งแรก
+    renderAdminTable();
+}
 // ========== 4. Logic การทำงานตามหน้า (Page-specific Logic) ==========
 
 function renderProductDetail() {
@@ -590,57 +708,6 @@ function renderCheckoutSummary() {
     if (installmentDetails) installmentDetails.innerHTML = '';
 }
 
-function renderAdditionalHeroSlides() {
-
-    const existingSlideProductIds = [3, 4]; 
-
-    const productsToRender = allProducts.filter(p => 
-        !existingSlideProductIds.includes(p.id) && p.type !== 'Top-up'
-    );
-
-    const banner = document.querySelector('.hero-banner');
-    const nextButton = document.querySelector('.hero-next');
-
-    if (!banner || !nextButton) return;
-
-    productsToRender.forEach(product => {
-        const newSlide = document.createElement('div');
-        newSlide.className = 'hero-slide';
-        if (product.videoUrl) {
-            newSlide.innerHTML = `
-                <iframe class="hero-video-iframe" 
-                 src="${product.videoUrl}" 
-                 frameborder="0" 
-                 allow="autoplay; encrypted-media" 
-                 allowfullscreen>
-                </iframe>
-                <div class="video-overlay"></div> 
-                <div class="hero-content">
-                   <h2>${product.name}</h2>
-                   <p>${product.description.split('.')[0]}</p>
-                   <a href="product-detail.html?id=${product.id}" class="btn btn-primary">ซื้อเลย</a>
-                </div>
-            `;
-        } else {
-            const imageUrl = product.largeImage || product.image;
-            newSlide.style.backgroundImage = `url('${imageUrl}')`;
-            newSlide.style.backgroundSize = 'cover';
-            newSlide.style.backgroundPosition = 'center';
-
-            newSlide.innerHTML = `
-                <div class="video-overlay"></div> 
-                <div class="hero-content">
-                   <h2>${product.name}</h2>
-                   <p>${product.description.split('.')[0]}</p>
-                   <a href="product-detail.html?id=${product.id}" class="btn btn-primary">ซื้อเลย</a>
-                </div>
-            `;
-        }
-        // --- (แก้ไข) ^^^^^^^^^^ จบ logic ^^^^^^^^^^ ---
-        
-        banner.insertBefore(newSlide, nextButton);
-    });
-}
 const currentPage = window.location.pathname.split('/').pop();
 
 if (currentPage === 'index.html' || currentPage === '') {
@@ -828,10 +895,9 @@ if (currentPage === 'index.html' || currentPage === '') {
             relatedCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
         });
     }
-
-} else if (currentPage === 'checkout.html') {
-    // --- Logic หน้าชำระเงิน ---
-    
+}
+else if (currentPage === 'checkout.html') {
+    // --- Logic เดิม: การคำนวณราคาและเลือกวิธีชำระเงิน ---
     const paymentRadios = document.querySelectorAll('input[name="payment"]');
     const paymentDetails = document.querySelectorAll('.payment-method-details');
     const allPaymentAmounts = document.querySelectorAll('.payment-amount');
@@ -849,7 +915,6 @@ if (currentPage === 'index.html' || currentPage === '') {
         });
     }
     
-    // (ฟังก์ชันนี้ซ้ำกับฟังก์ชันด้านบน แต่ไม่เป็นไรเพราะมันถูกเรียกใช้ในหน้านี้เท่านั้น)
     function renderCheckoutSummary() {
         const container = document.getElementById('checkout-summary-items');
         const checkoutTotalPriceEl = document.getElementById('checkout-total-price');
@@ -888,7 +953,7 @@ if (currentPage === 'index.html' || currentPage === '') {
                 targetDetail.classList.remove('hidden');
             }
             
-            if (radio.value !== 'card' && installmentToggle.checked) {
+            if (radio.value !== 'card' && installmentToggle && installmentToggle.checked) {
                 installmentToggle.checked = false;
                 installmentOptions.classList.add('hidden');
                 resetInstallments();
@@ -901,10 +966,12 @@ if (currentPage === 'index.html' || currentPage === '') {
         const totalWithInterest = total * (1 + (interestRate * months));
         const monthlyPayment = totalWithInterest / months;
         
-        installmentDetailsEl.innerHTML = `
-            ผ่อน <strong>${monthlyPayment.toFixed(2)} ฿</strong> / เดือน
-            (ยอดรวม <strong>${totalWithInterest.toFixed(2)} ฿</strong>)
-        `;
+        if(installmentDetailsEl) {
+            installmentDetailsEl.innerHTML = `
+                ผ่อน <strong>${monthlyPayment.toFixed(2)} ฿</strong> / เดือน
+                (ยอดรวม <strong>${totalWithInterest.toFixed(2)} ฿</strong>)
+            `;
+        }
         updatePaymentAmount(totalWithInterest); 
     }
 
@@ -918,7 +985,8 @@ if (currentPage === 'index.html' || currentPage === '') {
         installmentToggle.addEventListener('change', () => {
             if (installmentToggle.checked) {
                 installmentOptions.classList.remove('hidden');
-                document.querySelector('input[name="payment"][value="card"]').click();
+                const cardRadio = document.querySelector('input[name="payment"][value="card"]');
+                if(cardRadio) cardRadio.click();
             } else {
                 installmentOptions.classList.add('hidden');
                 resetInstallments();
@@ -934,8 +1002,84 @@ if (currentPage === 'index.html' || currentPage === '') {
     });
     
     renderCheckoutSummary();
-}
 
+    // --- (ส่วนที่เพิ่มใหม่) Logic การกดชำระเงินและ Gen Code ---
+    
+    function generateGameKey() {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let key = '';
+        for (let i = 0; i < 3; i++) {
+            let segment = '';
+            for (let j = 0; j < 5; j++) {
+                segment += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            key += segment + (i < 2 ? '-' : '');
+        }
+        return key;
+    }
+
+    const checkoutForm = document.querySelector('.payment-form form');
+    const successModal = document.getElementById('payment-success-modal');
+    const generatedKeysList = document.getElementById('generated-keys-list');
+    const closeSuccessBtn = document.getElementById('close-success-modal');
+
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // หยุดการ Refresh หน้าเว็บ
+
+            // 1. เช็คว่ามีของในตะกร้าไหม
+            if (cart.length === 0) {
+                alert('ไม่มีสินค้าในตะกร้า');
+                return;
+            }
+
+            // 2. จำลองการโหลด (Loading)
+            const submitBtn = checkoutForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> กำลังดำเนินการ...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                // 3. สร้างรายการ Key
+                if(generatedKeysList) {
+                    generatedKeysList.innerHTML = ''; // เคลียร์ของเก่า
+                    cart.forEach(item => {
+                        const fakeKey = generateGameKey();
+                        const keyItemHTML = `
+                            <div class="key-item">
+                                <span class="game-name-key"><i class="fa-solid fa-gamepad"></i> ${item.name}</span>
+                                <span class="code-box">${fakeKey}</span>
+                            </div>
+                        `;
+                        generatedKeysList.innerHTML += keyItemHTML;
+                    });
+                }
+
+                // 4. แสดง Modal
+                if(successModal) successModal.classList.add('active');
+                
+                // 5. ล้างตะกร้าสินค้า
+                cart = [];
+                saveCart();
+                renderCart(); // อัปเดต Sidebar
+                renderCheckoutSummary(); // อัปเดตหน้า Checkout
+                
+                // คืนค่าปุ่ม
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+
+            }, 1500); 
+        });
+    }
+
+    // ปุ่มปิด Modal -> กลับหน้าแรก
+    if (closeSuccessBtn) {
+        closeSuccessBtn.addEventListener('click', () => {
+            if(successModal) successModal.classList.remove('active');
+            window.location.href = 'index.html'; 
+        });
+    }
+}
 // ========== (ใหม่) 5. Logic สำหรับ Search Bar (อัปเกรด) ==========
 const searchInput = document.querySelector('.search-bar input');
 const searchButton = document.querySelector('.search-bar button');
@@ -1021,3 +1165,141 @@ if (searchButton && searchInput && searchResultsList) {
 
 // --- โหลดตะกร้าครั้งแรก (ทำงานทุกหน้า) ---
 renderCart();
+// ========== เพิ่ม Logic สำหรับหน้า Login และ Profile ==========
+
+if (currentPage === 'login.html') {
+    const loginForm = document.querySelector('.login-form-wrapper form');
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // ป้องกันเว็บรีโหลด
+
+            const usernameInput = document.getElementById('username').value.trim();
+            const passwordInput = document.getElementById('password').value.trim();
+
+            // ตรวจสอบว่ากรอกข้อมูลครบไหม
+            if (usernameInput === '' || passwordInput === '') {
+                alert('กรุณากรอกอีเมล/ชื่อผู้ใช้ และรหัสผ่าน');
+                return;
+            }
+
+            // --- เงื่อนไขการ Login ---
+            
+            // 1. กรณีเป็น Admin
+            if (usernameInput === 'admin' && passwordInput === '1234') {
+                alert('ยินดีต้อนรับ Admin!');
+                // (Optional) บันทึกสถานะว่า login แล้ว
+                localStorage.setItem('okItUser', JSON.stringify({ role: 'admin', name: 'Administrator' }));
+                
+                window.location.href = 'admin.html';
+            } 
+            // 2. กรณีเป็น User ทั่วไป
+            else {
+                alert(`ยินดีต้อนรับคุณ ${usernameInput}!`);
+                // (Optional) บันทึกสถานะว่า login แล้วเป็น user ทั่วไป
+                localStorage.setItem('okItUser', JSON.stringify({ role: 'user', name: usernameInput }));
+                
+                window.location.href = 'profile.html';
+            }
+        });
+    }
+}
+
+// Logic สำหรับหน้า Profile (เพื่อให้กด Logout ได้)
+else if (currentPage === 'profile.html') {
+    // ดึงชื่อผู้ใช้มาแสดง (ถ้ามี)
+    const user = JSON.parse(localStorage.getItem('okItUser'));
+    const profileNameEl = document.getElementById('profile-name-display');
+    
+    if (user && profileNameEl) {
+        profileNameEl.textContent = user.name;
+    } else if (!user) {
+        // ถ้าไม่ได้ login ให้เด้งกลับไปหน้า login
+        window.location.href = 'login.html';
+    }
+
+    // ปุ่ม Logout
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('okItUser'); // ลบสถานะ login
+            alert('ออกจากระบบเรียบร้อย');
+            window.location.href = 'login.html';
+        });
+    }
+    function generateGameKey() {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let key = '';
+        for (let i = 0; i < 3; i++) {
+            let segment = '';
+            for (let j = 0; j < 5; j++) {
+                segment += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            key += segment + (i < 2 ? '-' : '');
+        }
+        return key;
+    }
+
+    const checkoutForm = document.querySelector('.payment-form form');
+    const successModal = document.getElementById('payment-success-modal');
+    const generatedKeysList = document.getElementById('generated-keys-list');
+    const closeSuccessBtn = document.getElementById('close-success-modal');
+
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // หยุดการ Refresh หน้าเว็บ
+
+            // 1. เช็คว่ามีของในตะกร้าไหม
+            if (cart.length === 0) {
+                alert('ไม่มีสินค้าในตะกร้า');
+                return;
+            }
+
+            // 2. จำลองการโหลด (Loading) เล็กน้อยเพื่อให้ดูสมจริง (ถ้าต้องการ)
+            const submitBtn = checkoutForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> กำลังดำเนินการ...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                // 3. สร้างรายการ Key สำหรับแต่ละเกมในตะกร้า
+                generatedKeysList.innerHTML = ''; // เคลียร์ของเก่า
+                
+                cart.forEach(item => {
+                    const fakeKey = generateGameKey();
+                    
+                    const keyItemHTML = `
+                        <div class="key-item">
+                            <span class="game-name-key"><i class="fa-solid fa-gamepad"></i> ${item.name}</span>
+                            <span class="code-box">${fakeKey}</span>
+                        </div>
+                    `;
+                    generatedKeysList.innerHTML += keyItemHTML;
+                });
+
+                // 4. แสดง Modal
+                successModal.classList.add('active');
+                
+                // 5. ล้างตะกร้าสินค้าหลังจากซื้อเสร็จ
+                cart = [];
+                saveCart();
+                renderCart(); // อัปเดต Sidebar (ให้โล่ง)
+                renderCheckoutSummary(); // อัปเดตหน้า Checkout (ให้โล่ง)
+                
+                // คืนค่าปุ่ม
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+
+            }, 1500); // รอ 1.5 วินาที แล้วค่อยเด้ง Pop-up
+        });
+    }
+
+    // ปุ่มปิด Modal -> กลับหน้าแรก
+    if (closeSuccessBtn) {
+        closeSuccessBtn.addEventListener('click', () => {
+            successModal.classList.remove('active');
+            window.location.href = 'index.html'; // ส่งกลับหน้าแรก
+        });
+    }
+}

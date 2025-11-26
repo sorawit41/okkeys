@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OK-KEY Admin - จัดการร้านค้า</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS เฉพาะหน้า Admin (ใส่ไว้ตรงนี้ หรือย้ายไป style.css ก็ได้) */
+        body { background-color: #f4f6f9; }
+        
+        .admin-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .admin-sidebar {
+            width: 250px;
+            background-color: var(--color-primary);
+            color: white;
+            flex-shrink: 0;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .admin-logo {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .admin-logo img { width: 80%; margin: 0 auto; filter: brightness(0) invert(1); }
+        .admin-menu a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            color: rgba(255,255,255,0.8);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: 0.3s;
+        }
+        .admin-menu a:hover, .admin-menu a.active {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+        .admin-logout { margin-top: auto; color: #ff6b6b !important; }
+
+        /* Main Content */
+        .admin-content {
+            flex-grow: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-light);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .stat-icon {
+            width: 50px; height: 50px;
+            border-radius: 10px;
+            background: var(--color-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+        }
+        
+        /* Table */
+        .table-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-light);
+            overflow-x: auto;
+        }
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #eee; }
+        th { font-weight: 600; color: var(--color-primary); }
+        td img { width: 50px; height: 50px; object-fit: cover; border-radius: 6px; }
+        
+        .action-btn {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 0.5rem;
+        }
+        .btn-edit { background: #f39c12; color: white; }
+        .btn-delete { background: #e74c3c; color: white; }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 500px;
+            max-width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <img src="./OK_Keys_logo.png" alt="Logo">
+                <h3>Admin Panel</h3>
+            </div>
+            <nav class="admin-menu">
+                <a href="#" class="active"><i class="fa-solid fa-box"></i> สินค้าทั้งหมด</a>
+                <a href="index.html" target="_blank"><i class="fa-solid fa-earth-americas"></i> ไปที่หน้าร้านค้า</a>
+                <a href="/login.html" class="admin-logout"><i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ</a>
+            </nav>
+        </aside>
+
+        <main class="admin-content">
+            <div class="admin-header">
+                <h2>จัดการสินค้า (Product Management)</h2>
+                <div class="user-profile">
+                    <span><i class="fa-solid fa-user-circle"></i> Admin</span>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-gamepad"></i></div>
+                    <div>
+                        <h3 id="total-products-count">0</h3>
+                        <p>สินค้าทั้งหมด</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+                    <div>
+                        <h3>0.00 ฿</h3>
+                        <p>ยอดขายรวม (Mock)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>รายชื่อสินค้า</h3>
+                    <button class="btn btn-primary" onclick="openModal()"><i class="fa-solid fa-plus"></i> เพิ่มสินค้าใหม่</button>
+                    <button class="btn btn-secondary" onclick="resetDefaultData()" style="font-size: 0.8rem; margin-left: 10px;">Reset ข้อมูลเริ่มต้น</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>รูปภาพ</th>
+                            <th>ชื่อสินค้า</th>
+                            <th>แพลตฟอร์ม</th>
+                            <th>ราคา</th>
+                            <th>จัดการ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-product-table">
+                        </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <h3 id="modal-title">เพิ่มสินค้าใหม่</h3>
+            <form id="product-form">
+                <input type="hidden" id="p-id">
+                
+                <div class="form-group">
+                    <label>ชื่อสินค้า</label>
+                    <input type="text" id="p-name" required>
+                </div>
+                
+                <div class="form-row" style="display:flex; gap:1rem;">
+                    <div class="form-group" style="flex:1;">
+                        <label>ราคา</label>
+                        <input type="number" id="p-price" step="0.01" required>
+                    </div>
+                    <div class="form-group" style="flex:1;">
+                        <label>แพลตฟอร์ม</label>
+                        <select id="p-platform">
+                            <option value="PC">PC</option>
+                            <option value="PlayStation">PlayStation</option>
+                            <option value="Xbox">Xbox</option>
+                            <option value="Nintendo">Nintendo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row" style="display:flex; gap:1rem;">
+                    <div class="form-group" style="flex:1;">
+                        <label>ประเภท</label>
+                        <select id="p-type">
+                            <option value="Game">Game</option>
+                            <option value="Top-up">Top-up</option>
+                            <option value="DLC">DLC</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="flex:1;">
+                        <label>Tags (คั่นด้วยลูกน้ำ)</label>
+                        <input type="text" id="p-tags" placeholder="Best Seller, Special Deal">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>URL รูปภาพ</label>
+                    <input type="text" id="p-image" required placeholder="https://...">
+                </div>
+
+                <div class="form-group">
+                    <label>รายละเอียด</label>
+                    <textarea id="p-desc" rows="3"></textarea>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">ยกเลิก</button>
+                    <button type="submit" class="btn btn-primary">บันทึก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
