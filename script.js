@@ -82,7 +82,7 @@ const allProducts = [
     {
         id: 8,
         name: 'Xbox Game Pass Ultimate - 1 Month',
-        platform: 'Xbox',
+        platform: 'xbox',
         type: 'Top-up',
         price: 350.00,
         image: 'https://cms-assets.xboxservices.com/assets/62/6d/626d1db3-32b8-43bc-adbb-63ee3bb564ad.jpg?n=XboxGamePass-Poster-720x1080.jpg?q=90&o=f&w=80&h=128',
@@ -283,6 +283,135 @@ const allProducts = [
         tags: ['Best Seller'],
         genres: ['Open World racing'], // (ใหม่)
         largeImage: 'https://cdn.cdkeys.com/496x700/media/catalog/product/u/n/untitled-1_6_8.jpg',
+        discount: ''
+    },{
+        id: 24,
+        name: 'PSN Card Thai 500 THB',
+        platform: 'PlayStation',
+        type: 'Top-up',
+        price: 530.00,
+        image: 'https://psnthailand.in.th/images/backend/product/1/2025-3-112834.webp',
+        description: 'รับ Code ทางอีเมล และ SMS อัตโนมัติทันที ตลอด 24 ชั่วโมง บัตรเติมเงิน PlayStation Network (PSN Card) มูลค่า 500 บาท ใช้สำหรับเติมเงินในบัญชี PSN เพื่อซื้อเกม, DLC, สกิน, และอื่นๆ ใน PlayStation Store',
+        tags: ['Top-up'],
+        genres: ['Top-up'], // (ใหม่)
+        largeImage: 'https://psnthailand.in.th/images/backend/product/1/2025-3-112834.webp',
+        discount: ''
+    },
+    {
+        id: 24,
+        name: 'PSN Card Thai 300 THB',
+        platform: 'PlayStation',
+        type: 'Top-up',
+        price: 350.00,
+        image: 'https://psnthailand.in.th/images/backend/product/1/2025-2-1511111.webp',
+        description: 'รับ Code ทางอีเมล และ SMS อัตโนมัติทันที ตลอด 24 ชั่วโมง บัตรเติมเงิน PlayStation Network (PSN Card) มูลค่า 300 บาท ใช้สำหรับเติมเงินในบัญชี PSN เพื่อซื้อเกม, DLC, สกิน, และอื่นๆ ใน PlayStation Store',
+        tags: ['Top-up'],
+        genres: ['Top-up'], // (ใหม่)
+        largeImage: 'https://psnthailand.in.th/images/backend/product/1/2025-2-1511111.webp',
+        discount: ''
+    },
+    {
+        id: 24,
+        name: 'PSN Card Thai 1000 THB',
+        platform: 'PlayStation',
+        type: 'Top-up',
+        price: 1070.00,
+        image: 'https://psnthailand.in.th/images/backend/product/1/2025-3-112949.webp',
+        description: 'รับ Code ทางอีเมล และ SMS อัตโนมัติทันที ตลอด 24 ชั่วโมง บัตรเติมเงิน PlayStation Network (PSN Card) มูลค่า 1000 บาท ใช้สำหรับเติมเงินในบัญชี PSN เพื่อซื้อเกม, DLC, สกิน, และอื่นๆ ใน PlayStation Store',
+        tags: ['Top-up'],
+        genres: ['Top-up'], // (ใหม่)
+        largeImage: 'https://psnthailand.in.th/images/backend/product/1/2025-3-112949.webp',
+        discount: ''
+    },
+    {
+        id: 25,
+        name: 'Grand Theft Auto V - Premium Edition PS5',
+        platform: 'PlayStation',
+        type: 'game',
+        price: 480.00,
+        image: 'https://image.api.playstation.com/vulcan/img/rnd/202102/0422/8YNAS8majY1rLtsFCawLFTFe.jpg',
+        description: 'สัมผัสประสบการณ์ Grand Theft Auto V บนเครื่อง PS5 ด้วยภาพระดับ 4K, เฟรมเรตสูงสุด 60FPS, โหลดไวขึ้น และเอฟเฟกต์ Ray Tracing ที่ทำให้โลกของ Los Santos สมจริงยิ่งกว่าเดิม!',
+        tags: ['Best Seller'],
+        genres: ['Open world , Action , FPS '], // (ใหม่)
+        largeImage: 'https://image.api.playstation.com/vulcan/img/rnd/202102/0422/8YNAS8majY1rLtsFCawLFTFe.jpg',
+        discount: ''
+    },
+    {
+        id: 26,
+        name: 'Halo Infinite',
+        platform: 'Xbox',
+        type: 'game',
+        price: 580.00,
+        image: 'https://m.media-amazon.com/images/I/81GYn0fJehL._AC_UF1000,1000_QL80_.jpg',
+        description: 'ผลงานล่าสุดของซีรีส์นักรบ Master Chief สนามรบแบบ Open-World ครั้งแรกในแฟรนไชส์ พร้อมการต่อสู้สุดมันส์ ระบบ Grappleshot และโหมด Multiplayer เล่นฟรีที่อัปเดตตลอดเวลา',
+        tags: ['Best Seller'],
+        genres: ['FPS , Sci-fi'], // (ใหม่)
+        largeImage: 'https://m.media-amazon.com/images/I/81GYn0fJehL._AC_UF1000,1000_QL80_.jpg',
+        discount: ''
+    },
+    {
+        id: 27,
+        name: 'Elden Ring',
+        platform: 'Xbox',
+        type: 'game',
+        price: 1280.00,
+        image: 'https://m.media-amazon.com/images/I/718Psopj65L._AC_UF1000,1000_QL80_.jpg',
+        description: 'เกมแฟนตาซีแบบ “วิ่งล่าบอส” จาก FromSoftware — ผู้เล่นต้องเอาชนะบอส, สำรวจดินแดนกว้าง “Lands Between” และกลายเป็น Elden Lord ด้วยพลังแห่ง “Elden Ring”',
+        tags: ['Special Deal'],
+        genres: ['Action RPG , Open World'], // (ใหม่)
+        largeImage: 'https://m.media-amazon.com/images/I/718Psopj65L._AC_UF1000,1000_QL80_.jpg',
+        discount: '15%'
+    },
+    {
+        id: 28,
+        name: 'Starfield',
+        platform: 'Xbox',
+        type: 'game',
+        price: 1690.00,
+        image: 'https://m.media-amazon.com/images/I/71aB3c-1DiL._AC_UF1000,1000_QL80_.jpg',
+        description: 'เกม RPG อวกาศจาก Bethesda ให้ผู้เล่นสร้างตัวละครของตัวเอง แล้วสำรวจดาวเคราะห์ในกาแล็กซี่แบบเปิดกว้าง เข้าร่วมกลุ่ม Constellation เพื่อตามล่าเบาะแสลึกลับของมนุษยชาติ”',
+        tags: ['Special Deal'],
+        genres: ['Action RPG , Sci-fi'], // (ใหม่)
+        largeImage: 'https://m.media-amazon.com/images/I/71aB3c-1DiL._AC_UF1000,1000_QL80_.jpg',
+        discount: '15%'
+    },
+    {
+        id: 29,
+        name: 'The Legend of Zelda: Breath of the Wild',
+        platform: 'Nintendo',
+        type: 'game',
+        price: 1590.00,
+        image: 'https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg',
+        description: 'การผจญภัยระดับตำนานที่พาผู้เล่นสำรวจโลก Hyrule อันกว้างใหญ่ อิสระเต็มรูปแบบ จะปีนเขา ต่อสู้ ทำอาหาร หรือแก้ปริศนา ทำได้ตามใจ จัดเป็นหนึ่งในเกมที่ขายดีที่สุดของ Switch',
+        tags: ['Best Seller'],
+        genres: ['Action , Adventure , Open World'], // (ใหม่)
+        largeImage: 'https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg',
+        discount: ''
+    },
+    {
+        id: 30,
+        name: 'Mario Kart 8 Deluxe',
+        platform: 'Nintendo',
+        type: 'game',
+        price: 1430.00,
+        image: 'https://dl.lnwfile.com/smniw8.webp',
+        description: 'เกมแข่งรถแห่งมิตรภาพและศัตรูในเวลาเดียวกัน! มีตัวละครมากมาย ไอเทมป่วนสุดฮา และโหมด Multiplayer เล่นกับเพื่อนได้ทั้งออนไลน์และออฟไลน์ ขายดีตลอดปีทุกประเทศ',
+        tags: ['Best Seller'],
+        genres: ['Racing , Party'], // (ใหม่)
+        largeImage: 'https://dl.lnwfile.com/smniw8.webp',
+        discount: ''
+    },
+    {
+        id: 31,
+        name: 'Animal Crossing: New Horizons',
+        platform: 'Nintendo',
+        type: 'game',
+        price: 1450.00,
+        image: 'https://animalcrossingworld.com/wp-content/uploads/2020/01/animal-crossing-new-horizons-key-artwork-january-2020-large-logo.png',
+        description: 'เกมใช้ชีวิตสุดชิล สร้างเกาะ ตกปลา จัดบ้าน แต่งสวน พบปะเพื่อนบ้านสุดน่ารัก เล่นได้เรื่อย ๆ ไม่มีความรุนแรง เหมาะทุกวัย และเป็นเกมติดอันดับขายดีแบบยาวนาน',
+        tags: ['Best Seller'],
+        genres: ['Simulation , Social'], // (ใหม่)
+        largeImage: 'https://animalcrossingworld.com/wp-content/uploads/2020/01/animal-crossing-new-horizons-key-artwork-january-2020-large-logo.png',
         discount: ''
     },
 ];
@@ -710,24 +839,58 @@ function renderCheckoutSummary() {
 
 const currentPage = window.location.pathname.split('/').pop();
 
+// --- 5.1 หน้าแรก (Index) ---
 if (currentPage === 'index.html' || currentPage === '') {
 
+    // 1. ประกาศฟังก์ชันสำหรับสร้าง Hero Slide เพิ่มเติม
+    function renderAdditionalHeroSlides() {
+        const existingSlideProductIds = [3, 4]; 
+        const productsToRender = allProducts.filter(p => 
+            !existingSlideProductIds.includes(p.id) && p.type !== 'Top-up'
+        ).slice(0, 3);
+
+        const banner = document.querySelector('.hero-banner');
+        const nextButton = document.querySelector('.hero-next');
+
+        if (!banner || !nextButton) return;
+
+        productsToRender.forEach(product => {
+            const newSlide = document.createElement('div');
+            newSlide.className = 'hero-slide';
+            const imageUrl = product.largeImage || product.image;
+            newSlide.style.backgroundImage = `url('${imageUrl}')`;
+            newSlide.style.backgroundSize = 'cover';
+            newSlide.style.backgroundPosition = 'center';
+
+            newSlide.innerHTML = `
+                <div class="video-overlay"></div> 
+                <div class="hero-content">
+                   <h2>${product.name}</h2>
+                   <p>${product.description.split('.')[0]}</p>
+                   <a href="product-detail.html?id=${product.id}" class="btn btn-primary">ซื้อเลย</a>
+                </div>
+            `;
+            banner.insertBefore(newSlide, nextButton);
+        });
+    }
+
+    // 2. เรียกใช้ฟังก์ชัน Hero Slide
     renderAdditionalHeroSlides();
 
+    // 3. ส่วนแสดง Best Sellers (ที่หายไป)
     const bestSellers = allProducts.filter(p => p.tags.includes('Best Seller'));
     renderProductCarousel(bestSellers, 'product-carousel-bestsellers');
     
-    // บรรทัดนี้จะดึงสไลด์ทั้งหมด (รวม 2 อันเดิม และสไลด์ใหม่ที่เพิ่งสร้าง)
+    // 4. Logic การเลื่อนสไลด์ (Carousel)
     const heroSlides = document.querySelectorAll('.hero-slide'); 
     const heroPrev = document.querySelector('.hero-prev');
     const heroNext = document.querySelector('.hero-next');
     let currentHeroSlide = 0;
-    let autoSlideInterval; // (เพิ่ม) ประกาศตัวแปรสำหรับ autoplay
+    let autoSlideInterval; 
 
     function showHeroSlide(index) {
         if (!heroSlides.length) return;
         
-        // (แก้ไข) คำนวณ index ให้วนลูป
         if (index >= heroSlides.length) {
             currentHeroSlide = 0;
         } else if (index < 0) {
@@ -740,47 +903,46 @@ if (currentPage === 'index.html' || currentPage === '') {
         heroSlides[currentHeroSlide].classList.add('active');
     }
 
-    // (เพิ่ม) ฟังก์ชันสำหรับสไลด์ถัดไป (สำหรับ autoplay)
     function nextHeroSlide() {
         showHeroSlide(currentHeroSlide + 1);
     }
 
-    // (เพิ่ม) ฟังก์ชันเริ่ม autoplay
     function startAutoplay() {
-        clearInterval(autoSlideInterval); // เคลียร์ของเก่าก่อน
-        autoSlideInterval = setInterval(nextHeroSlide, 5000); // 5000ms = 5 วินาที
+        clearInterval(autoSlideInterval); 
+        autoSlideInterval = setInterval(nextHeroSlide, 5000); 
     }
 
     if (heroNext) heroNext.addEventListener('click', () => {
         nextHeroSlide();
-        startAutoplay(); // รีเซ็ตตัวนับเวลาเมื่อกดเอง
+        startAutoplay(); 
     });
     if (heroPrev) heroPrev.addEventListener('click', () => {
         showHeroSlide(currentHeroSlide - 1);
-        startAutoplay(); // รีเซ็ตตัวนับเวลาเมื่อกดเอง
+        startAutoplay(); 
     });
 
-    startAutoplay(); // (เพิ่ม) เริ่ม autoplay เมื่อโหลดหน้า
+    startAutoplay(); 
 
-    // (แก้ไข) โค้ดเลื่อนสไลด์ autoplay จากครั้งก่อน (ย้ายมารวมกัน)
-    // (ส่วนนี้เป็นโค้ดเดิมของคุณที่ผมเพิ่มให้ครั้งที่แล้ว)
-
-
+    // 5. ปุ่มเลื่อนสินค้า Best Seller
     const productCarousel = document.getElementById('product-carousel-bestsellers');
     const productPrevBtn = document.querySelector('.product-prev');
     const productNextBtn = document.querySelector('.product-next');
     
     if (productCarousel) {
         const scrollAmount = 276; 
-        productNextBtn.addEventListener('click', () => {
-            productCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        });
-        productPrevBtn.addEventListener('click', () => {
-            productCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        });
+        if(productNextBtn) {
+            productNextBtn.addEventListener('click', () => {
+                productCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+        }
+        if(productPrevBtn) {
+            productPrevBtn.addEventListener('click', () => {
+                productCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+        }
     }
-
-} else if (currentPage === 'store.html') {
+}
+else if (currentPage === 'store.html') {
     // --- (แก้ไข) Logic หน้า Store เพื่อรองรับการค้นหา ---
     const filterBar = document.getElementById('filter-bar');
     
